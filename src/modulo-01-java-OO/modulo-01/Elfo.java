@@ -17,24 +17,25 @@ public class Elfo {
     public String getNome() {
         return nome;
     }
-    
+
     public Item getFlecha(){
         return flecha;
     }
-    
+
     public Item getArco() {
         return arco;
     }
 
     public void atirarFlecha() {
-        flecha.setQuantidade(flecha.getQuantidade() - 1);
-        experiencia++;
+        if (flecha.getQuantidade() > 0 ){
+            flecha.setQuantidade(flecha.getQuantidade() - 1);
+            experiencia++;
+        }
     }
 
     /*public void atirarFlechaRefactory() {
-        experiencia++;
-        flecha.setQuantidade(flecha.getQuantidade()-1);
+    experiencia++;
+    flecha.setQuantidade(flecha.getQuantidade()-1);
     }*/
 }
-
 
