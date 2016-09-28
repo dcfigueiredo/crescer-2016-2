@@ -74,16 +74,15 @@ public class ElfoTest
     public void testaToStringNome (){
         String nomeEsperado = "asd";
         Elfo elfoDoTeste = new Elfo (nomeEsperado);
-        String retornoDoToString = elfoDoTeste.toString ();
-        assertEquals(retornoDoToString, elfoDoTeste.toString());
+        //String retornoDoToString = elfoDoTeste.toString ();
+        assertEquals("asd possui 42 flechas e 0 níveis de experiência." , elfoDoTeste.toString());
     }
 
     @Test
-    public void testaToStringQuantidadeDeFlechasEExperiencia(){
+    public void testaToStringQuantidadeDeFlechas(){
         Elfo elfoDoTeste = new Elfo ("asd");
         elfoDoTeste.atirarFlecha(new Dwarf());
-        String retornoDoToString = elfoDoTeste.toString();
-        assertEquals(retornoDoToString, elfoDoTeste.toString());
+        assertEquals("asd possui 41 flechas e 1 níveis de experiência.", elfoDoTeste.toString());
     }
 
     @Test
