@@ -3,20 +3,19 @@ public class Elfo {
     private Item arco;
     private Item flecha;
     private int experiencia;
-    private Dwarf zangado;
 
     public Elfo(String n) {
         nome = n;
         arco = new Item("Arco", 1);
         flecha = new Item("Flechas", 42);
     }
-    
+
     public Elfo (String n, int q){
         nome = n;
         arco = new Item ("Arco", 1);
         flecha = new Item ("Flechas", q);
     }
-    
+
     public void setNome(String n) {
         nome = n;
     }
@@ -46,11 +45,17 @@ public class Elfo {
     }
 
     public String toString(){
-        String stringDeRetorno = nome; // Inicializa o retorno com o nome do elfo.
-        stringDeRetorno = stringDeRetorno + " possui " + Integer.toString(flecha.getQuantidade()) + " flechas "; // Concatena a quantidade de flechas na string retorno
-        stringDeRetorno = stringDeRetorno + " e " + Integer.toString(experiencia) + " níveis de experiencia."; // Concatena a quantidade de experiencia do elfo
-        return stringDeRetorno;
-        //return nome + " possui " + Integer.toString(flecha.getQuantidade()) + " e " + Integer.toString(experiencia) + " níveis de experiencia.";
+        boolean flechaNoSingular = flecha.getQuantidade() == 1;
+        boolean experienciaNoSingular = experiencia == 1;
+
+        return String.format("%s possui %d %s e %d %s de experiência.",
+            nome,
+            flecha.getQuantidade(),
+            flechaNoSingular ? "flecha" : "flechas",
+            experiencia,
+            experienciaNoSingular ? "nível" : "níveis"
+        );
+        //return nome + " possui " + flecha.getQuantidade() + " e " + experiencia + " níveis de experiência.";
     }
 }
 
@@ -58,5 +63,4 @@ public class Elfo {
 experiencia++;
 flecha.setQuantidade(flecha.getQuantidade()-1);
 }*/
-
 
