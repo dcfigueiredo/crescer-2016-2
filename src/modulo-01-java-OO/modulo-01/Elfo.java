@@ -5,15 +5,13 @@ public class Elfo {
     private int experiencia;
 
     public Elfo(String n) {
-        nome = n;
-        arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", 42);
+        this(n,42);
     }
 
     public Elfo (String n, int q){
         nome = n;
         arco = new Item ("Arco", 1);
-        flecha = new Item ("Flechas", q);
+        flecha = new Item ("Flechas", q>=0 ? q : 42 );
     }
 
     public void setNome(String n) {
