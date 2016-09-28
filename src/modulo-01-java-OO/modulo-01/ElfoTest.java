@@ -25,7 +25,7 @@ public class ElfoTest
     }
 
     @Test
-    public void elfoNasceComFlechas() {
+    public void elfoNasceCom42Flechas() {
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
         // Assert
@@ -42,6 +42,7 @@ public class ElfoTest
         }
         // Assert
         assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals (42, elfoDoTeste.getExperiencia());
     }
 
     @Test
@@ -52,6 +53,7 @@ public class ElfoTest
         elfoDoTeste.atirarFlecha();
         // Assert
         assertEquals(40, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(2, elfoDoTeste.getExperiencia());
     }
 
     @Test
