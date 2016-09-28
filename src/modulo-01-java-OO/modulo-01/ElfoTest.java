@@ -54,4 +54,17 @@ public class ElfoTest
         assertEquals(40, elfoDoTeste.getFlecha().getQuantidade());
     }
 
+    @Test
+    public void elfoTemFlechasNegativas() {
+        // Act
+        Elfo elfoDoTeste = new Elfo("asd");
+        while (elfoDoTeste.getFlecha().getQuantidade() > 0) {
+            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha();
+        }
+        // Assert
+        assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
+    }
 }
