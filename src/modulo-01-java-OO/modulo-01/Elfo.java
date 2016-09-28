@@ -22,26 +22,35 @@ public class Elfo {
     public Item getFlecha(){
         return flecha;
     }
+
     public int getExperiencia (){
         return experiencia;
     }
+
     public Item getArco() {
         return arco;
     }
 
-    public void atirarFlecha() {
+    public void atirarFlecha(Dwarf dwarf) {
         if (flecha.getQuantidade() > 0 ){
-            if (zangado.checaVida() == true){
-                flecha.setQuantidade(flecha.getQuantidade() - 1);
-                zangado.tiraVida();
-                experiencia++;
-            }
+            flecha.setQuantidade(flecha.getQuantidade() - 1);
+            dwarf.tiraVida();
+            experiencia++;
         }
     }
 
-    /*public void atirarFlechaRefactory() {
-    experiencia++;
-    flecha.setQuantidade(flecha.getQuantidade()-1);
-    }*/
+    public String toString(){
+        String stringDeRetorno = nome; // Inicializa o retorno com o nome do elfo.
+        stringDeRetorno = stringDeRetorno + " possui " + Integer.toString(flecha.getQuantidade()) + " flechas "; // Concatena a quantidade de flechas na string retorno
+        stringDeRetorno = stringDeRetorno + " e " + Integer.toString(experiencia) + " níveis de experiencia."; // Concatena a quantidade de experiencia do elfo
+        return stringDeRetorno;
+        //return nome + " possui " + Integer.toString(flecha.getQuantidade()) + " e " + Integer.toString(experiencia) + " níveis de experiencia.";
+    }
 }
+
+/*public void atirarFlechaRefactory() {
+experiencia++;
+flecha.setQuantidade(flecha.getQuantidade()-1);
+}*/
+
 

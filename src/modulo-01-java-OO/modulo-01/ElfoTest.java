@@ -14,7 +14,7 @@ public class ElfoTest
         // Assert
         assertEquals(nomeEsperado, elfoDoTeste.getNome());
     }
-
+    
     @Test
     public void elfoNasceComArco() {
         // Act
@@ -38,7 +38,7 @@ public class ElfoTest
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
         while (elfoDoTeste.getFlecha().getQuantidade() > 0) {
-            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha(new Dwarf());
         }
         // Assert
         assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
@@ -49,8 +49,8 @@ public class ElfoTest
     public void elfoAtiraDuasFlechas() {
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
-        elfoDoTeste.atirarFlecha();
-        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha(new Dwarf());
+        elfoDoTeste.atirarFlecha(new Dwarf());
         // Assert
         assertEquals(40, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(2, elfoDoTeste.getExperiencia());
@@ -61,12 +61,28 @@ public class ElfoTest
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
         while (elfoDoTeste.getFlecha().getQuantidade() > 0) {
-            elfoDoTeste.atirarFlecha();
-            elfoDoTeste.atirarFlecha();
-            elfoDoTeste.atirarFlecha();
-            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf());
         }
         // Assert
         assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void testaToStringNome (){
+        String nomeEsperado = "asd";
+        Elfo elfoDoTeste = new Elfo (nomeEsperado);
+        String retornoDoToString = elfoDoTeste.toString ();
+        assertEquals(retornoDoToString, elfoDoTeste.toString());
+    }
+    
+    @Test
+    public void testaToStringQuantidadeDeFlechasEExperiencia(){
+        Elfo elfoDoTeste = new Elfo ("asd");
+        elfoDoTeste.atirarFlecha(new Dwarf());
+        String retornoDoToString = elfoDoTeste.toString();
+        assertEquals(retornoDoToString, elfoDoTeste.toString());
     }
 }
