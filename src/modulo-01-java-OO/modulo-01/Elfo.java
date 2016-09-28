@@ -10,7 +10,13 @@ public class Elfo {
         arco = new Item("Arco", 1);
         flecha = new Item("Flechas", 42);
     }
-
+    
+    public Elfo (String n, int q){
+        nome = n;
+        arco = new Item ("Arco", 1);
+        flecha = new Item ("Flechas", q);
+    }
+    
     public void setNome(String n) {
         nome = n;
     }

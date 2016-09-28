@@ -14,7 +14,7 @@ public class ElfoTest
         // Assert
         assertEquals(nomeEsperado, elfoDoTeste.getNome());
     }
-    
+
     @Test
     public void elfoNasceComArco() {
         // Act
@@ -69,7 +69,7 @@ public class ElfoTest
         // Assert
         assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
+
     @Test
     public void testaToStringNome (){
         String nomeEsperado = "asd";
@@ -77,12 +77,30 @@ public class ElfoTest
         String retornoDoToString = elfoDoTeste.toString ();
         assertEquals(retornoDoToString, elfoDoTeste.toString());
     }
-    
+
     @Test
     public void testaToStringQuantidadeDeFlechasEExperiencia(){
         Elfo elfoDoTeste = new Elfo ("asd");
         elfoDoTeste.atirarFlecha(new Dwarf());
         String retornoDoToString = elfoDoTeste.toString();
         assertEquals(retornoDoToString, elfoDoTeste.toString());
+    }
+
+    @Test
+    public void elfoNasceCom10Flechas (){
+        Elfo elfoDoTeste = new Elfo ("asd", 10);
+        assertEquals(10, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void elfoNasceCom50Flechas (){
+        Elfo elfoDoTeste = new Elfo ("asd", 50);
+        assertEquals(50, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void elfoNasceCom333Flechas (){
+        Elfo elfoDoTeste = new Elfo ("asd", 333);
+        assertEquals(333, elfoDoTeste.getFlecha().getQuantidade());
     }
 }
