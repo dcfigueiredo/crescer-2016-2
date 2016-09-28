@@ -37,20 +37,21 @@ public class ElfoTest
     public void elfoAtiraTodasFlechas() {
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
-        // Assert
         while (elfoDoTeste.getFlecha().getQuantidade() > 0) {
             elfoDoTeste.atirarFlecha();
         }
+        // Assert
+        assertEquals (0, elfoDoTeste.getFlecha().getQuantidade());
     }
 
     @Test
     public void elfoAtiraDuasFlechas() {
         // Act
         Elfo elfoDoTeste = new Elfo("asd");
+        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha();
         // Assert
-        while (elfoDoTeste.getFlecha().getQuantidade() > 0) {
-            elfoDoTeste.atirarFlecha();
-            elfoDoTeste.atirarFlecha();
-        }
+        assertEquals(40, elfoDoTeste.getFlecha().getQuantidade());
     }
+
 }
