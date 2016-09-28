@@ -22,7 +22,9 @@ public class Elfo {
     public Item getFlecha(){
         return flecha;
     }
-
+    public int getExperiencia (){
+        return experiencia;
+    }
     public Item getArco() {
         return arco;
     }
