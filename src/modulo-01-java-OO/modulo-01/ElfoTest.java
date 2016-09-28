@@ -82,7 +82,7 @@ public class ElfoTest
     public void testaToStringQuantidadeDeFlechas(){
         Elfo elfoDoTeste = new Elfo ("asd");
         elfoDoTeste.atirarFlecha(new Dwarf());
-        assertEquals("asd possui 41 flechas e 1 níveis de experiência.", elfoDoTeste.toString());
+        assertEquals("asd possui 41 flechas e 1 nível de experiência.", elfoDoTeste.toString());
     }
 
     @Test

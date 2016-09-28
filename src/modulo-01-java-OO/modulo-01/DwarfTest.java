@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class DwarfTest
 {
+    @Test
     public void testaReceber1Flecha (){
         Elfo elfoDoTeste = new Elfo ("asd");
         Dwarf zangado = new Dwarf ();
@@ -13,6 +14,7 @@ public class DwarfTest
         assertEquals(100, zangado.getVida());   
     }
 
+    @Test	
     public void testaDwarfMorto ()  {
         Elfo elfoDoTeste = new Elfo ("asd");
         Dwarf atchim = new Dwarf ();
@@ -29,5 +31,25 @@ public class DwarfTest
         elfoDoTeste.atirarFlecha(atchim);
         elfoDoTeste.atirarFlecha(atchim);
         assertEquals("MORTO", atchim.getStatus());	
+    }
+
+    @Test
+    public void testaDwarfVidaNegativa ()  {
+        Elfo elfoDoTeste = new Elfo ("asd");
+        Dwarf dunga = new Dwarf ();
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        elfoDoTeste.atirarFlecha(dunga);
+        assertEquals(0, dunga.getVida());	
     }
 }
