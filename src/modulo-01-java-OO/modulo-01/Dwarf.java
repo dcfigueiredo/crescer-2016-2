@@ -1,13 +1,21 @@
 public class Dwarf {
     private int vida = 110;
-
+    private String status = "VIVO";
     public void tiraVida (){
         vida = vida -10;
+        checaVida();
     }
 
-    public boolean checaVida () {
-        if (vida > 0 )
-            return true;
-        return false;
+    public void checaVida () {
+        if (vida <= 0 )
+            status = "MORTO";
+    }
+    
+    public int getVida(){
+        return vida;
+    }
+    
+    public String getStatus (){
+        return status;
     }
 }
