@@ -18,6 +18,10 @@ public class Elfo {
         return nome;
     }
     
+    public Item getFlecha(){
+        return flecha;
+    }
+    
     public Item getArco() {
         return arco;
     }
