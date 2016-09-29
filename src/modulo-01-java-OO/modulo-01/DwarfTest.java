@@ -61,11 +61,34 @@ public class DwarfTest
         assertEquals(1, muradinBronzebeard.getDataNascimento().getMes());
         assertEquals(3987, muradinBronzebeard.getDataNascimento().getAno());
     }
-    
+
     @Test
     public void testaNomeDoDwarf(){
         String nomeEsperado = "Magni";
         Dwarf dwarfDoTeste = new Dwarf (nomeEsperado, new DataTerceiraEra(1,1,1));
         assertEquals("Magni", dwarfDoTeste.getNome());
+    }
+
+    @Test
+    public void testaNumeroDaSorte101(){
+        double numeroEsperado = 101.0;
+        Dwarf dwarfDoTeste = new Dwarf ("asd", new DataTerceiraEra (1,1,1));
+        assertEquals(numeroEsperado, dwarfDoTeste.getNumeroSorte(), .0);
+    }
+
+    @Test
+    public void testaNumeroDaSorteMenos3333(){
+        double numeroEsperado = -3333.0;
+        Dwarf dwarfDoTeste = new Dwarf ("asd", new DataTerceiraEra (1,1,2000));
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        assertEquals(numeroEsperado, dwarfDoTeste.getNumeroSorte(), .0);
+    }
+
+    @Test
+    public void testaNumeroDaSorte33(){
+        double numeroEsperado = 33;
+        Dwarf dwarfDoTeste = new Dwarf ("Meireles", new DataTerceiraEra (1,1,1));
+        assertEquals(numeroEsperado, dwarfDoTeste.getNumeroSorte(), .0);
     }
 }
