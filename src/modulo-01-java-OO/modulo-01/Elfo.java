@@ -3,7 +3,7 @@ public class Elfo {
     private Item arco;
     private Item flecha;
     private int experiencia;
-
+    private Status status;
     public Elfo(String nome) {
         this(nome,42);
     }
@@ -12,6 +12,7 @@ public class Elfo {
         this.nome = nome;
         arco = new Item ("Arco", 1);
         flecha = new Item ("Flechas", quantidade >=0 ? quantidade : 42 );
+        status = Status.VIVO;
     }
 
     public void setNome(String n) {
@@ -54,6 +55,10 @@ public class Elfo {
             experienciaNoSingular ? "nível" : "níveis"
         );
         //return nome + " possui " + flecha.getQuantidade() + " e " + experiencia + " níveis de experiência.";
+    }
+    
+    public Status getStatus(){
+        return status;
     }
 }
 
