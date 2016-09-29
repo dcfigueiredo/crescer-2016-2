@@ -75,4 +75,28 @@ public class DwarfTest
         assertEquals(0,dwarfDoTeste.getExperiencia());
         assertEquals(110,dwarfDoTeste.getVida());
     }
+
+    @Test
+    public void testaDwarfNasceVivo(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD", new DataTerceiraEra(1,1,2000));
+        assertEquals(Status.VIVO, dwarfDoTeste.getStatus());
+    }
+
+    @Test
+    public void testaDwarfMorre(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD", new DataTerceiraEra(1,1,1));
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        assertEquals(Status.MORTO,dwarfDoTeste.getStatus());
+    }
 }

@@ -1,21 +1,30 @@
 public class Dwarf {
     private int vida = 110;
-    private String status = "VIVO";
     private String nome;
     private DataTerceiraEra dataNascimento;
     private int experiencia;
-
+    private Status status;
     public Dwarf (String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.status = Status.VIVO;
     }
 
     public void tiraVida (){
         double numeroSorte = getNumeroSorte();
-        if (numeroSorte < 0 )
-            experiencia += 2;
-        if (numeroSorte > 100)
-            vida = vida -10;
+        boolean estaVivo = status == Status.VIVO ? true : false;
+
+        if (estaVivo){
+            if (numeroSorte < 0 )
+                experiencia += 2;
+            if (numeroSorte > 100){
+                vida = vida-10;            
+                if (vida <=0){
+                    vida = 0;
+                    status = Status.MORTO;
+                }
+            }
+        }
     }
 
     public double getNumeroSorte(){
@@ -43,11 +52,11 @@ public class Dwarf {
         return vida;
     }
 
-    public String getStatus (){
-        return status;
-    }
-    
     public int getExperiencia(){
         return experiencia;
+    }
+
+    public Status getStatus (){
+        return status;
     }
 }
