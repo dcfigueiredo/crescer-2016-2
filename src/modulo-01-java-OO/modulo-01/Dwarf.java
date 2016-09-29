@@ -3,6 +3,7 @@ public class Dwarf {
     private String status = "VIVO";
     private String nome;
     private DataTerceiraEra dataNascimento;
+    private int experiencia;
 
     public Dwarf (String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
@@ -10,15 +11,11 @@ public class Dwarf {
     }
 
     public void tiraVida (){
-        vida = vida -10;
-        checaVida();
-    }
-
-    private void checaVida () {
-        if (vida <= 0 ){
-            status = "MORTO";
-            vida = 0;
-        }
+        double numeroSorte = getNumeroSorte();
+        if (numeroSorte < 0 )
+            experiencia += 2;
+        if (numeroSorte > 100)
+            vida = vida -10;
     }
 
     public double getNumeroSorte(){
@@ -48,5 +45,9 @@ public class Dwarf {
 
     public String getStatus (){
         return status;
+    }
+    
+    public int getExperiencia(){
+        return experiencia;
     }
 }

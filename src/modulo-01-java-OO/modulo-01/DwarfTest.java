@@ -14,45 +14,6 @@ public class DwarfTest
         assertEquals(100, zangado.getVida());   
     }
 
-    @Test	
-    public void testaDwarfMorto ()  {
-        Elfo elfoDoTeste = new Elfo ("asd");
-        Dwarf atchim = new Dwarf ("Atchim", new DataTerceiraEra(1,1,1));
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        elfoDoTeste.atirarFlecha(atchim);
-        assertEquals("MORTO", atchim.getStatus());	
-    }
-
-    @Test
-    public void testaDwarfVidaNegativa ()  {
-        Elfo elfoDoTeste = new Elfo ("asd");
-        Dwarf dunga = new Dwarf ("Dunga", new DataTerceiraEra(1,1,1));
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        elfoDoTeste.atirarFlecha(dunga);
-        assertEquals(0, dunga.getVida());	
-    }
-
     @Test
     public void testaDataDeNascimento (){
         DataTerceiraEra dataEsperada = new DataTerceiraEra(22,1,3987);
@@ -90,5 +51,28 @@ public class DwarfTest
         double numeroEsperado = 33;
         Dwarf dwarfDoTeste = new Dwarf ("Meireles", new DataTerceiraEra (1,1,1));
         assertEquals(numeroEsperado, dwarfDoTeste.getNumeroSorte(), .0);
+    }
+
+    @Test
+    public void testaPerderVida(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD", new DataTerceiraEra(1,1,2000));
+        dwarfDoTeste.tiraVida();
+        assertEquals(100,dwarfDoTeste.getVida());
+    }
+
+    @Test
+    public void testaGanhaExperiencia(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD", new DataTerceiraEra(1,1,2000));
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        assertEquals(2,dwarfDoTeste.getExperiencia());
+    }
+
+    @Test
+    public void testaDwarfNaoRecebeFlechadaNemExperiencia(){
+        Dwarf dwarfDoTeste = new Dwarf ("Meireles", new DataTerceiraEra(1,1,1));
+        assertEquals(0,dwarfDoTeste.getExperiencia());
+        assertEquals(110,dwarfDoTeste.getVida());
     }
 }
