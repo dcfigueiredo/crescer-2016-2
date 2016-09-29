@@ -4,14 +4,14 @@ public class Elfo {
     private Item flecha;
     private int experiencia;
 
-    public Elfo(String n) {
-        this(n,42);
+    public Elfo(String nome) {
+        this(nome,42);
     }
 
-    public Elfo (String n, int q){
-        nome = n;
+    public Elfo (String nome, int quantidade){
+        this.nome = nome;
         arco = new Item ("Arco", 1);
-        flecha = new Item ("Flechas", q>=0 ? q : 42 );
+        flecha = new Item ("Flechas", quantidade >=0 ? quantidade : 42 );
     }
 
     public void setNome(String n) {
