@@ -5,6 +5,10 @@ public class Dwarf {
     private int experiencia;
     private Status status;
     private Inventario mochila;
+    
+    public Dwarf (String nome){
+        this(nome, new DataTerceiraEra(1,1,1));
+    }
     public Dwarf (String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -64,7 +68,11 @@ public class Dwarf {
     public int getExperiencia(){
         return experiencia;
     }
-
+    
+    public Inventario getInventario(){
+        return this.mochila;
+    }
+    
     public Status getStatus (){
         return status;
     }

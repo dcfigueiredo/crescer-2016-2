@@ -99,4 +99,12 @@ public class DwarfTest
         dwarfDoTeste.tiraVida();
         assertEquals(Status.MORTO,dwarfDoTeste.getStatus());
     }
+    
+    @Test
+    public void testaAdicionarItem (){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        Item itemEsperado = new Item ("Barba", 1);
+        dwarfDoTeste.adicionarItem(itemEsperado);
+        assertEquals(true, dwarfDoTeste.getInventario().getArrayList().contains(itemEsperado));
+    }
 }
