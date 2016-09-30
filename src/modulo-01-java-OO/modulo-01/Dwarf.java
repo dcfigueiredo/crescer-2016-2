@@ -4,12 +4,21 @@ public class Dwarf {
     private DataTerceiraEra dataNascimento;
     private int experiencia;
     private Status status;
+    private Inventario mochila;
     public Dwarf (String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.status = Status.VIVO;
+        mochila = new Inventario();
     }
-
+    
+    public void adicionarItem(Item item){
+        this.mochila.adicionarItem(item);
+    }
+    public void removerItem (Item item){
+        this.mochila.removerItem(item);
+    }
+    
     public void tiraVida (){
         double numeroSorte = getNumeroSorte();
         boolean estaVivo = status == Status.VIVO ? true : false;
