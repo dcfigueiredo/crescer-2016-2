@@ -10,4 +10,8 @@ public class Inventario{
     public void removerItem(Item item){
         this.itens.remove(item);
     }
+    
+    public ArrayList getArrayList (){
+        return itens;
+    }
 }
