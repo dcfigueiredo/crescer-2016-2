@@ -16,13 +16,12 @@ public class Inventario{
         return itens;
     }
     
-    //TO-DO: Adicionar testes na classe Elfo e Dwarf;
-    public String getDescricoesItens(){
+    public String getDescricaoDeTodosOsItens(){
         String descricao = "";
         for (int i = 0; i < itens.size(); i++){
             descricao += itens.get(i).getDescricao() + "," ;
         }
-        return descricao;
+        return descricao.substring(0, descricao.length() -1);
     }
     
     //TO-DO CRIAR TESTES!
