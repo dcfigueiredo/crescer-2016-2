@@ -28,7 +28,7 @@ public class Elfo {
         return experiencia;
     }
 
-
+    //TO-DO: Concertar esse método pegando as flechas da mochila.
     public void atirarFlecha(Dwarf dwarf) {
         if (flecha.getQuantidade() > 0 ){
             flecha.setQuantidade(flecha.getQuantidade() - 1);
@@ -36,7 +36,7 @@ public class Elfo {
             experiencia++;
         }
     }
-
+    //TO-DO: Concertar esse método pegando as flechas da mochila.
     public String toString(){
         boolean flechaNoSingular = flecha.getQuantidade() == 1;
         boolean experienciaNoSingular = experiencia == 1;
