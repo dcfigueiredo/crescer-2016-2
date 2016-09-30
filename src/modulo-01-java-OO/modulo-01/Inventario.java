@@ -12,7 +12,7 @@ public class Inventario{
     }
     
     //TO-DO: Pesquisar se tem uma maneira melhor de acessar a lista.
-    public ArrayList getArrayList (){
+    public ArrayList<Item> getArrayList (){
         return itens;
     }
     
