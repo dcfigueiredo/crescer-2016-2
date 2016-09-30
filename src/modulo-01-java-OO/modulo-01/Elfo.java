@@ -1,17 +1,18 @@
 public class Elfo {
     private String nome;
-    private Item arco;
-    private Item flecha;
+    //private Item arco;
+    //private Item flecha;
     private int experiencia;
     private Status status;
+    private Inventario mochila;
     public Elfo(String nome) {
         this(nome,42);
     }
 
     public Elfo (String nome, int quantidade){
         this.nome = nome;
-        arco = new Item ("Arco", 1);
-        flecha = new Item ("Flechas", quantidade >=0 ? quantidade : 42 );
+        mochila.adicionarItem(new Item ("Arco", 1));
+        mochila.adicionarItem (new Item ("Flechas", quantidade >=0 ? quantidade : 42 ));
         status = Status.VIVO;
     }
 
@@ -23,17 +24,10 @@ public class Elfo {
         return nome;
     }
 
-    public Item getFlecha(){
-        return flecha;
-    }
-
     public int getExperiencia (){
         return experiencia;
     }
 
-    public Item getArco() {
-        return arco;
-    }
 
     public void atirarFlecha(Dwarf dwarf) {
         if (flecha.getQuantidade() > 0 ){
