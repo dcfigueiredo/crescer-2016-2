@@ -1,7 +1,5 @@
 public class Elfo {
     private String nome;
-    //private Item arco;
-    //private Item flecha;
     private int experiencia;
     private Status status;
     private Inventario mochila = new Inventario ();

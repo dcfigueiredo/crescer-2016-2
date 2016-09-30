@@ -55,7 +55,6 @@ public class Dwarf {
         return numeroDaSorte;
     }
 
-    //TO-DO Criar TESTEEES!
     public void tentarSorte(){
         boolean temSorte = getNumeroSorte() == -3333.0;
         if (temSorte){

@@ -140,4 +140,34 @@ public class DwarfTest
         assertEquals(false, dwarfDoTeste.getMochila().getArrayList().contains(itemEsperado));
         assertEquals(false, dwarfDoTeste.getMochila().getArrayList().contains(outroItemEsperado));
     }
+
+    @Test
+    public void testarTentarSorteComUmItem (){
+        Dwarf dwarfDoTeste = new Dwarf ("asd", new DataTerceiraEra (1,1,2000));
+        dwarfDoTeste.adicionarItem(new Item ("Forgotten Beast Meat", 1));
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tentarSorte();
+        assertEquals(1001, dwarfDoTeste.getMochila().getArrayList().get(0).getQuantidade());
+    }
+
+    @Test
+    public void testarTentarSorteComCincoItem (){
+        Dwarf dwarfDoTeste = new Dwarf ("asd", new DataTerceiraEra (1,1,2000));
+        dwarfDoTeste.adicionarItem(new Item ("Forgotten Beast Meat", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Emu Man Meat", 2));
+        dwarfDoTeste.adicionarItem(new Item ("Goblin Index Finger", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Boatmurder", 4));
+        dwarfDoTeste.adicionarItem(new Item ("Urist McUrist Multilated Corpse", 5));
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tiraVida();
+        dwarfDoTeste.tentarSorte();
+        assertEquals(1001, dwarfDoTeste.getMochila().getArrayList().get(0).getQuantidade());
+        assertEquals(1002, dwarfDoTeste.getMochila().getArrayList().get(1).getQuantidade());
+        assertEquals(1003, dwarfDoTeste.getMochila().getArrayList().get(2).getQuantidade());
+        assertEquals(1004, dwarfDoTeste.getMochila().getArrayList().get(3).getQuantidade());
+        assertEquals(1005, dwarfDoTeste.getMochila().getArrayList().get(4).getQuantidade());
+    }
 }
