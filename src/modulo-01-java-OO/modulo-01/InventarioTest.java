@@ -22,4 +22,17 @@ public class InventarioTest{
         dwarfDoTeste.adicionarItem(new Item ("Bala", 1));
         assertEquals("Bala,Bala,Bala,Bala", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
     }
+
+    @Test
+    public void testarMaiorItemEntre5Itens(){
+        Dwarf dwarfDoTeste = new Dwarf ("Urist");
+        Item itemEsperado = new Item ("Plump helmets", 50);
+        dwarfDoTeste.adicionarItem(new Item ("Plump helmets", 50));
+        dwarfDoTeste.adicionarItem(new Item ("Master Crafter Axe", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Master Crafter Axe", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Master Crafter Axe", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Master Crafter Axe", 1));
+        assertEquals(itemEsperado.getDescricao(), dwarfDoTeste.getMochila().itemComMaiorQuantidade().getDescricao());
+        assertEquals(itemEsperado.getQuantidade(), dwarfDoTeste.getMochila().itemComMaiorQuantidade().getQuantidade());
+    }
 }
