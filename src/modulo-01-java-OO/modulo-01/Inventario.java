@@ -24,4 +24,11 @@ public class Inventario{
         }
         return descricao;
     }
+    
+    //TO-DO CRIAR TESTES!
+    public void aumentaMilUnidades(){
+        for (Item itens : itens){
+            itens.setQuantidade(itens.getQuantidade() + 1000);
+        }
+    }
 }
