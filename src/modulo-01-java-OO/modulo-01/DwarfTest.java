@@ -99,12 +99,45 @@ public class DwarfTest
         dwarfDoTeste.tiraVida();
         assertEquals(Status.MORTO,dwarfDoTeste.getStatus());
     }
-    
+
     @Test
     public void testaAdicionarItem (){
         Dwarf dwarfDoTeste = new Dwarf ("ASD");
         Item itemEsperado = new Item ("Barba", 1);
         dwarfDoTeste.adicionarItem(itemEsperado);
-        assertEquals(true, dwarfDoTeste.getInventario().getArrayList().contains(itemEsperado));
+        assertEquals(true, dwarfDoTeste.getMochila().getArrayList().contains(itemEsperado));
+    }
+
+    @Test
+    public void testaAdicionar2Itens (){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        Item itemEsperado = new Item ("Barba", 1);
+        Item outroItemEsperado = new Item ("OutraBarba", 1);
+        dwarfDoTeste.adicionarItem(itemEsperado);
+        dwarfDoTeste.adicionarItem(outroItemEsperado);        
+        assertEquals(true, dwarfDoTeste.getMochila().getArrayList().contains(itemEsperado));
+        assertEquals(true, dwarfDoTeste.getMochila().getArrayList().contains(outroItemEsperado));
+    }
+
+    @Test
+    public void testaRemoverItem (){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        Item itemEsperado = new Item ("Barba", 1);
+        dwarfDoTeste.adicionarItem(itemEsperado);
+        dwarfDoTeste.removerItem(itemEsperado);
+        assertEquals(false, dwarfDoTeste.getMochila().getArrayList().contains(itemEsperado));
+    }
+
+    @Test
+    public void testaRemover2Itens (){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        Item itemEsperado = new Item ("Barba", 1);
+        Item outroItemEsperado = new Item ("OutraBarba", 1);
+        dwarfDoTeste.adicionarItem(itemEsperado);
+        dwarfDoTeste.adicionarItem(outroItemEsperado);
+        dwarfDoTeste.removerItem(itemEsperado);
+        dwarfDoTeste.removerItem(outroItemEsperado);        
+        assertEquals(false, dwarfDoTeste.getMochila().getArrayList().contains(itemEsperado));
+        assertEquals(false, dwarfDoTeste.getMochila().getArrayList().contains(outroItemEsperado));
     }
 }
