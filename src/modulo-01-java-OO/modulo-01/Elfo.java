@@ -4,7 +4,7 @@ public class Elfo {
     //private Item flecha;
     private int experiencia;
     private Status status;
-    private Inventario mochila;
+    private Inventario mochila = new Inventario ();
     public Elfo(String nome) {
         this(nome,42);
     }
@@ -28,22 +28,22 @@ public class Elfo {
         return experiencia;
     }
 
-    //TO-DO: Melhorar legibilidade e repetição de código
     public void atirarFlecha(Dwarf dwarf) {
-        if (mochila.getArrayList().get(1).getQuantidade() > 0 ){
-            mochila.getArrayList().get(1).setQuantidade((mochila.getArrayList().get(1).getQuantidade() - 1));
+        int quantidadeDeFlechas = getFlecha().getQuantidade();
+        if ( quantidadeDeFlechas > 0 ){
+            mochila.getArrayList().get(1).setQuantidade(quantidadeDeFlechas - 1);
             dwarf.tiraVida();
             experiencia++;
         }
     }
-    //TO-DO: Melhorar legibilidade e repetição de código
     public String toString(){
-        boolean flechaNoSingular = getFlecha().getQuantidade() == 1;
+        int quantidadeDeFlechas = getFlecha().getQuantidade();
+        boolean flechaNoSingular = quantidadeDeFlechas == 1;
         boolean experienciaNoSingular = experiencia == 1;
 
         return String.format("%s possui %d %s e %d %s de experiência.",
             nome,
-            mochila.getArrayList().get(1).getQuantidade(),
+            quantidadeDeFlechas,
             flechaNoSingular ? "flecha" : "flechas",
             experiencia,
             experienciaNoSingular ? "nível" : "níveis"
