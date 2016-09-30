@@ -11,7 +11,17 @@ public class Inventario{
         this.itens.remove(item);
     }
     
+    //TO-DO: Pesquisar se tem uma maneira melhor de acessar a lista.
     public ArrayList getArrayList (){
         return itens;
+    }
+    
+    //TO-DO: Adicionar testes na classe Elfo e Dwarf;
+    public String getDescricoesItens(){
+        String descricao = "";
+        for (int i = 0; i < itens.size(); i++){
+            descricao += itens.get(i).getDescricao() + "," ;
+        }
+        return descricao;
     }
 }
