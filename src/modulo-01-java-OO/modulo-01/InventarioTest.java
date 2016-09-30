@@ -35,4 +35,28 @@ public class InventarioTest{
         assertEquals(itemEsperado.getDescricao(), dwarfDoTeste.getMochila().itemComMaiorQuantidade().getDescricao());
         assertEquals(itemEsperado.getQuantidade(), dwarfDoTeste.getMochila().itemComMaiorQuantidade().getQuantidade());
     }
+
+    @Test
+    public void testarOrdenarInventarioCom3Itens(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        dwarfDoTeste.adicionarItem(new Item ("Barba", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Flechas", 24));
+        dwarfDoTeste.adicionarItem(new Item ("Ossos", 3));
+        dwarfDoTeste.getMochila().ordentarItens();
+        assertEquals("Barba,Ossos,Flechas", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
+    }
+
+    @Test
+    public void testarOrdenarInventarioCom8Itens(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        dwarfDoTeste.adicionarItem(new Item ("Barba", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Flechas", 24));
+        dwarfDoTeste.adicionarItem(new Item ("Ossos", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Olhos", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Esferas", 3));        
+        dwarfDoTeste.adicionarItem(new Item ("Cerveja", 7));
+        dwarfDoTeste.adicionarItem(new Item ("Mais Cerveja", 100));
+        dwarfDoTeste.getMochila().ordentarItens();
+        assertEquals("Barba,Ossos,Olhos,Esferas,Cerveja,Flechas,Mais Cerveja", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
+    }
 }

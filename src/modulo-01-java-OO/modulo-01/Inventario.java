@@ -42,4 +42,34 @@ public class Inventario{
         }
         return item;
     }
+    
+    public void ordentarItens(){
+        Item itemASerComparado;
+        for (int i = 0; i < itens.size(); i++){
+            itemASerComparado = itens.get(i);
+            for (int j = i + 1; j < itens.size(); j++){
+                if (itemASerComparado.getQuantidade() > itens.get(j).getQuantidade()){
+                    itens.set(i, itens.get(j));
+                    itens.set(j, itemASerComparado);
+                    break;
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
