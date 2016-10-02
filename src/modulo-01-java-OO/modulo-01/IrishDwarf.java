@@ -54,19 +54,18 @@ public class IrishDwarf {
         }
         return numeroDaSorte;
     }
-
-    //TO-DO ARRUMAR DUPLICAÇÃO DE CÓDIGO, TÁ HORRÍVEL! >.<
+    
+    //TO-DO: Procurar melhoria.
     public void tentarSorte(){
         boolean temSorte = getNumeroSorte() == -3333.0;
         if (temSorte){
             for (int i = 0; i < getMochila().getArrayList().size(); i ++){
                 int quantidadeDeItens = getMochila().getArrayList().get(i).getQuantidade();
                 int somaDeValores = 0;
-                quantidadeDeItens = quantidadeDeItens < 0 ? quantidadeDeItens * -1 : quantidadeDeItens;
-                for (int j = 0; j <= quantidadeDeItens; j ++){
+                for (int j = 0; j <= Math.abs(quantidadeDeItens); j ++){
                     somaDeValores += j;
                 }
-                getMochila().getArrayList().get(i).setQuantidade((somaDeValores * 1000)+quantidadeDeItens);
+                getMochila().getArrayList().get(i).setQuantidade((somaDeValores * 1000) + quantidadeDeItens);
             }
         }
     }
