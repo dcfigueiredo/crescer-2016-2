@@ -1,29 +1,13 @@
-public class Elfo {
-    private String nome;
-    private int experiencia;
-    private Status status;
-    private Inventario mochila = new Inventario ();
+public class Elfo extends Personagem{
+
     public Elfo(String nome) {
         this(nome,42);
     }
 
     public Elfo (String nome, int quantidade){
-        this.nome = nome;
+        super(nome);
         mochila.adicionarItem(new Item ("Arco", 1));
         mochila.adicionarItem (new Item ("Flechas", quantidade >=0 ? quantidade : 42 ));
-        status = Status.VIVO;
-    }
-
-    public void setNome(String n) {
-        nome = n;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getExperiencia (){
-        return experiencia;
     }
 
     public void atirarFlecha(Dwarf dwarf) {
@@ -34,6 +18,7 @@ public class Elfo {
             experiencia++;
         }
     }
+
     public String toString(){
         int quantidadeDeFlechas = getFlecha().getQuantidade();
         boolean flechaNoSingular = quantidadeDeFlechas == 1;
@@ -55,14 +40,6 @@ public class Elfo {
 
     public Item getFlecha(){
         return this.mochila.getArrayList().get(1);
-    }
-
-    public Inventario getMochila(){
-        return mochila;
-    }
-
-    public Status getStatus(){
-        return status;
     }
 }
 

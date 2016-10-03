@@ -1,20 +1,14 @@
-public class Dwarf {
+public class Dwarf extends Personagem{
     private int vida = 110;
-    private String nome;
     private DataTerceiraEra dataNascimento;
-    private int experiencia;
-    private Status status;
-    private Inventario mochila = new Inventario();
 
     public Dwarf (String nome){
         this(nome, new DataTerceiraEra(1,1,1));
     }
 
     public Dwarf (String nome, DataTerceiraEra dataNascimento){
-        this.nome = nome;
+        super(nome);
         this.dataNascimento = dataNascimento;
-        this.status = Status.VIVO;
-        mochila = new Inventario();
     }
 
     public void adicionarItem(Item item){
@@ -66,25 +60,7 @@ public class Dwarf {
         return dataNascimento;
     }
 
-    public String getNome(){
-        return nome;
-    }
-
     public int getVida(){
         return vida;
-    }
-
-    public int getExperiencia(){
-        return experiencia;
-    }
-
-    public Inventario getMochila(){
-        return this.mochila;
-    }
-
-    
-    
-    public Status getStatus (){
-        return status;
     }
 }
