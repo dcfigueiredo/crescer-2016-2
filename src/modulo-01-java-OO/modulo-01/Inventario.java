@@ -42,8 +42,8 @@ public class Inventario{
         }
         return item;
     }
-    
-    public void ordentarItens(){
+
+    public void ordenarItens(){
         Item itemASerComparado;
         for (int i = 0; i < itens.size(); i++){
             itemASerComparado = itens.get(i);
@@ -56,20 +56,24 @@ public class Inventario{
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public void ordenarItens(TipoOrdenacao ordenar){
+        if (ordenar == TipoOrdenacao.ASCENDENTE){
+            ordenarItens();
+        }
+        else {
+            Item itemASerComparado;
+            for (int i = 0; i < itens.size(); i++){
+                itemASerComparado = itens.get(i);
+                for (int j = i + 1; j < itens.size(); j++){
+                    if (itemASerComparado.getQuantidade() > itens.get(j).getQuantidade()){
+                        itens.set(j, itemASerComparado);
+                        itens.set(i, itens.get(j));
+                        break;
+                    }
+                }
+            }
+
+        }
+    }
 }

@@ -42,7 +42,7 @@ public class InventarioTest{
         dwarfDoTeste.adicionarItem(new Item ("Barba", 1));
         dwarfDoTeste.adicionarItem(new Item ("Flechas", 24));
         dwarfDoTeste.adicionarItem(new Item ("Ossos", 3));
-        dwarfDoTeste.getMochila().ordentarItens();
+        dwarfDoTeste.getMochila().ordenarItens();
         assertEquals("Barba,Ossos,Flechas", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
     }
 
@@ -56,7 +56,35 @@ public class InventarioTest{
         dwarfDoTeste.adicionarItem(new Item ("Esferas", 3));        
         dwarfDoTeste.adicionarItem(new Item ("Cerveja", 7));
         dwarfDoTeste.adicionarItem(new Item ("Mais Cerveja", 100));
-        dwarfDoTeste.getMochila().ordentarItens();
+        dwarfDoTeste.getMochila().ordenarItens();
         assertEquals("Barba,Ossos,Olhos,Esferas,Cerveja,Flechas,Mais Cerveja", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
+    }
+
+    @Test
+    public void testarOrdenarInventarioCom8ItensAscendente(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        dwarfDoTeste.adicionarItem(new Item ("Barba", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Flechas", 24));
+        dwarfDoTeste.adicionarItem(new Item ("Ossos", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Olhos", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Esferas", 3));        
+        dwarfDoTeste.adicionarItem(new Item ("Cerveja", 7));
+        dwarfDoTeste.adicionarItem(new Item ("Mais Cerveja", 100));
+        dwarfDoTeste.getMochila().ordenarItens(TipoOrdenacao.ASCENDENTE);
+        assertEquals("Barba,Ossos,Olhos,Esferas,Cerveja,Flechas,Mais Cerveja", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
+    }
+
+    @Test
+    public void testarOrdenarInventarioCom8ItensDescendente(){
+        Dwarf dwarfDoTeste = new Dwarf ("ASD");
+        dwarfDoTeste.adicionarItem(new Item ("Barba", 1));
+        dwarfDoTeste.adicionarItem(new Item ("Flechas", 24));
+        dwarfDoTeste.adicionarItem(new Item ("Ossos", 2));
+        dwarfDoTeste.adicionarItem(new Item ("Olhos", 3));
+        dwarfDoTeste.adicionarItem(new Item ("Esferas", 4));        
+        dwarfDoTeste.adicionarItem(new Item ("Cerveja", 7));
+        dwarfDoTeste.adicionarItem(new Item ("Mais Cerveja", 100));
+        dwarfDoTeste.getMochila().ordenarItens(TipoOrdenacao.DESCENDENTE);
+        assertEquals("Mais Cerveja,Flechas,Cerveja,Esferas,Olhos,Ossos,Barba", dwarfDoTeste.getMochila().getDescricaoDeTodosOsItens());
     }
 }

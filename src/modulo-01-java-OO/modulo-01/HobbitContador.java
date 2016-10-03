@@ -10,6 +10,7 @@ public class HobbitContador{
 
         for (int i = 0; i < arrayDePares.size(); i++){
             for (int j = 0; j < arrayDePares.get(i).size(); j ++){
+                
                 int numeroASerMultiplicado1 = arrayDePares.get(i).get(j);
                 int numeroASerMultiplicado2 = arrayDePares.get(i).get(j+1);
                 arrayDeProdutos.add(numeroASerMultiplicado1*numeroASerMultiplicado2);
