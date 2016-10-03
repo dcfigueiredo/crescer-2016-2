@@ -1,6 +1,6 @@
 public class Dwarf extends Personagem{
-    private int vida = 110;
-    private DataTerceiraEra dataNascimento;
+    protected int vida = 110;
+    protected DataTerceiraEra dataNascimento;
 
     public Dwarf (String nome){
         this(nome, new DataTerceiraEra(1,1,1));
