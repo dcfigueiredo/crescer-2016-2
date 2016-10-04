@@ -3,6 +3,7 @@ public class Personagem{
     protected Inventario mochila = new Inventario();
     protected Status status;
     protected int experiencia;
+    protected double vida;
 
     public Personagem (String nome){
         this.nome = nome;

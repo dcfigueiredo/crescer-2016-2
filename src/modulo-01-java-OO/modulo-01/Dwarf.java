@@ -4,6 +4,7 @@ public class Dwarf extends Personagem{
 
     public Dwarf (String nome){
         this(nome, new DataTerceiraEra(1,1,1));
+        this.vida = 110;
     }
 
     public Dwarf (String nome, DataTerceiraEra dataNascimento){

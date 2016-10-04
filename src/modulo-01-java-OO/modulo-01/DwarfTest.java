@@ -11,7 +11,7 @@ public class DwarfTest
         Elfo elfoDoTeste = new Elfo ("asd");
         Dwarf zangado = new Dwarf ("zangado", new DataTerceiraEra(1,1,1));
         elfoDoTeste.atirarFlecha(zangado);
-        assertEquals(100, zangado.getVida());   
+        assertEquals(100, zangado.getVida(),0.);   
     }
 
     @Test
@@ -57,7 +57,7 @@ public class DwarfTest
     public void testaPerderVida(){
         Dwarf dwarfDoTeste = new Dwarf ("ASD", new DataTerceiraEra(1,1,2000));
         dwarfDoTeste.tiraVida();
-        assertEquals(100,dwarfDoTeste.getVida());
+        assertEquals(100,dwarfDoTeste.getVida(),0.);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class DwarfTest
     public void testaDwarfNaoRecebeFlechadaNemExperiencia(){
         Dwarf dwarfDoTeste = new Dwarf ("Meireles", new DataTerceiraEra(1,1,1));
         assertEquals(0,dwarfDoTeste.getExperiencia());
-        assertEquals(110,dwarfDoTeste.getVida());
+        assertEquals(110,dwarfDoTeste.getVida(),0.);
     }
 
     @Test

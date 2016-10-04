@@ -1,5 +1,4 @@
 public class Elfo extends Personagem{
-
     public Elfo(String nome) {
         this(nome,42);
     }
@@ -8,8 +7,9 @@ public class Elfo extends Personagem{
         super(nome);
         mochila.adicionarItem(new Item ("Arco", 1));
         mochila.adicionarItem (new Item ("Flechas", quantidade >=0 ? quantidade : 42 ));
-    }
-
+        vida = 100;
+    }    
+    
     public void atirarFlecha(Dwarf dwarf) {
         int quantidadeDeFlechas = getFlecha().getQuantidade();
         if ( quantidadeDeFlechas > 0 ){
