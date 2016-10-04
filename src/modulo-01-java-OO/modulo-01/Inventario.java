@@ -11,7 +11,6 @@ public class Inventario{
         this.itens.remove(item);
     }
 
-    //TO-DO: Pesquisar se tem uma maneira melhor de acessar a lista.
     public ArrayList<Item> getArrayList (){
         return itens;
     }
@@ -24,16 +23,15 @@ public class Inventario{
         return descricao.substring(0, descricao.length() -1);
     }
 
-    //TO-DO CRIAR TESTES!
     public void aumentarMilUnidades(){
         for (Item itens : itens){
             itens.setQuantidade(itens.getQuantidade() + 1000);
         }
     }
-    //TO-DO Melhorar legibilidade	
+
     public Item itemComMaiorQuantidade(){
         int maiorQuantidade = 0;
-        Item item = new Item ("asd", 0); //TO-DO arrumar essa gambiarra	
+        Item item = new Item ("", 0);
         for (int i = 0; i < itens.size(); i++){
             if (maiorQuantidade < itens.get(i).getQuantidade()){
                 maiorQuantidade = itens.get(i).getQuantidade();
@@ -43,37 +41,28 @@ public class Inventario{
         return item;
     }
 
-    public void ordenarItens(){
-        Item itemASerComparado;
-        for (int i = 0; i < itens.size(); i++){
-            itemASerComparado = itens.get(i);
-            for (int j = i + 1; j < itens.size(); j++){
-                if (itemASerComparado.getQuantidade() > itens.get(j).getQuantidade()){
-                    itens.set(i, itens.get(j));
-                    itens.set(j, itemASerComparado);
-                    break;
-                }
-            }
-        }
-    }
+    public void ordenarItens() { 
+        ordenarItens(TipoOrdenacao.ASCENDENTE); 
+    } 
 
     public void ordenarItens(TipoOrdenacao ordenar){
-        if (ordenar == TipoOrdenacao.ASCENDENTE){
-            ordenarItens();
-        }
-        else {
-            Item itemASerComparado;
-            for (int i = 0; i < itens.size(); i++){
-                itemASerComparado = itens.get(i);
-                for (int j = i + 1; j < itens.size(); j++){
-                    if (itemASerComparado.getQuantidade() > itens.get(j).getQuantidade()){
-                        itens.set(j, itemASerComparado);
-                        itens.set(i, itens.get(j));
-                        break;
-                    }
+       boolean continuaTrocandoPosicoes;
+       boolean ascendente = ordenar == TipoOrdenacao.ASCENDENTE;
+       do {
+           continuaTrocandoPosicoes = false;
+           for (int i = 0; i < itens.size() - 1; i++){
+               Item itemASerComparado = itens.get(i);
+               Item proximoItem = itens.get(i+1);
+               
+               boolean precisaTrocarPosicao = ascendente ? itemASerComparado.getQuantidade() > proximoItem.getQuantidade() : itemASerComparado.getQuantidade() < proximoItem.getQuantidade(); 
+               
+               if (precisaTrocarPosicao){
+                 itens.set(i, proximoItem);
+                 itens.set(i+1, itemASerComparado);
+                 continuaTrocandoPosicoes = true;
                 }
             }
-
-        }
+        } while (continuaTrocandoPosicoes);
     }
+
 }
