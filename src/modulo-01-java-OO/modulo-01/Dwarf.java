@@ -20,9 +20,9 @@ public class Dwarf extends Personagem{
             if (numeroSorte < 0 )
                 experiencia += 2;
             if (numeroSorte > 100){
-                vida = vida-10;            
-                if (vida <=0){
-                    vida = 0;
+                this.vida = this.vida-10;            
+                if (this.vida <=0){
+                    this.vida = 0;
                     status = Status.MORTO;
                 }
             }

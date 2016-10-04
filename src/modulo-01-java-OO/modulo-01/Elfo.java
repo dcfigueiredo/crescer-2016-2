@@ -3,12 +3,16 @@ public class Elfo extends Personagem{
         this(nome,42);
     }
 
-    public Elfo (String nome, int quantidade){
-        super(nome);
-        mochila.adicionarItem(new Item ("Arco", 1));
-        mochila.adicionarItem (new Item ("Flechas", quantidade >=0 ? quantidade : 42 ));
-        vida = 100;
+    public Elfo (String nome, int quantidadeDeFlechas){
+        super(nome);        
+        this.vida = 100;
+        inicializarInventario(quantidadeDeFlechas);
     }    
+    
+    public void inicializarInventario(int quantidadeDeFlechas){
+        mochila.adicionarItem(new Item ("Arco", 1));
+        mochila.adicionarItem (new Item ("Flechas", quantidadeDeFlechas >=0 ? quantidadeDeFlechas : 42 ));
+    }
     
     public void atirarFlecha(Dwarf dwarf) {
         int quantidadeDeFlechas = getFlecha().getQuantidade();

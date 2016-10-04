@@ -1,10 +1,17 @@
 public class ElfoVerde extends Elfo{    
+    
+    public ElfoVerde (String nome){
+        super(nome);
+    }
 
-    //TO-DO: Pesquisar pq tenho que chamar o construtor da super.
     public ElfoVerde (String nome, int quantidade){
         super(nome, quantidade);   
-        this.mochila.getArrayList().set(0, new Item ("Espada de aço valiriano", 1));
-        this.mochila.getArrayList().set(1, new Item ("Arco e Flecha de Vidro", quantidade));
+    }
+    
+    @Override
+    public void inicializarInventario(int quantidade){
+        this.mochila.adicionarItem(new Item("Espada de aço valiriano", 1));
+        this.mochila.adicionarItem(new Item("Arco e Flecha de Vidro", quantidade));
     }
 
     public void atirarFlecha(Dwarf dwarf) {
