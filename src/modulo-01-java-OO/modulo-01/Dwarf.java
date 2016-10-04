@@ -11,14 +11,6 @@ public class Dwarf extends Personagem{
         this.dataNascimento = dataNascimento;
     }
 
-    public void adicionarItem(Item item){
-        this.mochila.adicionarItem(item);
-    }
-
-    public void removerItem (Item item){
-        this.mochila.removerItem(item);
-    }
-
     public void tiraVida (){
         double numeroSorte = getNumeroSorte();
         boolean estaVivo = status == Status.VIVO ? true : false;

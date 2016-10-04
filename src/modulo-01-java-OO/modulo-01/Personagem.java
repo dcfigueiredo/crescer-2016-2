@@ -3,12 +3,21 @@ public class Personagem{
     protected Inventario mochila = new Inventario();
     protected Status status;
     protected int experiencia;
-    
+
     public Personagem (String nome){
         this.nome = nome;
         this.status = Status.VIVO;
-        
+
     }
+
+    public void adicionarItem(Item item){
+        this.mochila.adicionarItem(item);
+    }
+
+    public void removerItem (Item item){
+        this.mochila.removerItem(item);
+    }
+
     public void setNome(String n) {
         nome = n;
     }
