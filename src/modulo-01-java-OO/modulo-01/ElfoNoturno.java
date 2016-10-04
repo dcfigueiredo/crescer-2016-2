@@ -1,9 +1,11 @@
 public class ElfoNoturno extends Elfo{
 
     public ElfoNoturno (String nome){
-        super(nome);
+        this(nome,42);
     }
-
+    public ElfoNoturno(String nome, int quantidade){
+        super(nome, quantidade);
+    }
     public void atirarFlecha(Dwarf dwarf) {
         int quantidadeDeFlechas = getFlecha().getQuantidade();
         if ( quantidadeDeFlechas > 0 && status == Status.VIVO){
