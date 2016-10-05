@@ -5,6 +5,11 @@ import org.junit.Test;
 
 public class ElfoVerdeTest{
 
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void testarSeNasceuComItemsComDescricaoCertao(){
         ElfoVerde elfinho = new ElfoVerde ("asd", 42);

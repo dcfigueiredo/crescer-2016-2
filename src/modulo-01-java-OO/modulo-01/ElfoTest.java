@@ -5,6 +5,22 @@ import org.junit.Test;
 
 public class ElfoTest
 {
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+    
+    @Test
+    public void adicionarTresElfosDeTipoDiferenteEConfereOCensoDeElfos(){
+             
+        Elfo e = new Elfo ("Legolas");
+        Elfo en = new ElfoNoturno ("Outro Legolas");
+        Elfo ev = new ElfoVerde ("000EsteTesteTemUnsNumeros000");
+
+        assertEquals(3, Elfo.getCensoDeElfos());
+
+    }
+
     @Test
     public void elfoNasceComNome() {
         // Arrange
@@ -102,7 +118,7 @@ public class ElfoTest
         Elfo elfoDoTeste = new Elfo ("asd", 333);
         assertEquals(333, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
+
     @Test
     public void elfoNasceVivo (){
         Elfo e = new Elfo ("asd");

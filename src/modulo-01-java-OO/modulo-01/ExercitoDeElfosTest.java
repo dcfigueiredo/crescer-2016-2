@@ -5,6 +5,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ExercitoDeElfosTest{
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void testarAlistarElfoNoturnoEElfoVerdeEProcurarPeloNome(){
         ExercitoDeElfos exercito = new ExercitoDeElfos();

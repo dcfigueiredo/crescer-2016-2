@@ -1,4 +1,6 @@
 public class Elfo extends Personagem{
+    private static int censoDeElfos = 0;
+    
     public Elfo(String nome) {
         this(nome,42);
     }
@@ -7,7 +9,12 @@ public class Elfo extends Personagem{
         super(nome);        
         this.vida = 100;
         inicializarInventario(quantidadeDeFlechas);
+        Elfo.censoDeElfos++;
     }    
+    
+    public static int getCensoDeElfos(){
+        return Elfo.censoDeElfos;
+    }
     
     public void inicializarInventario(int quantidadeDeFlechas){
         mochila.adicionarItem(new Item ("Arco", 1));
@@ -38,6 +45,11 @@ public class Elfo extends Personagem{
         //return nome + " possui " + flecha.getQuantidade() + " e " + experiencia + " níveis de experiência.";
     }
 
+    protected void finalize () throws Throwable{
+        super.finalize();
+        censoDeElfos --;
+    }
+    
     public Item getArco(){
         return this.mochila.getArrayList().get(0);
     }

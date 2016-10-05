@@ -4,6 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ElfoNoturnoTest{
+    @After
+    public void tearDown(){
+        System.gc();
+    }
+
     @Test
     public void testarPerderVidaComFlechada(){
         ElfoNoturno e = new ElfoNoturno ("asd");
