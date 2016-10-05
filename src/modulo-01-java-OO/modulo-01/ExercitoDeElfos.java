@@ -21,4 +21,18 @@ public class ExercitoDeElfos{
             exercito.add((ElfoVerde)elfo);
         }
     }       
+    
+    public ArrayList<Elfo> buscarPorStatus(Status status){
+        ArrayList<Elfo> novoArray = new ArrayList<>();
+        
+        for (int i = 0; i < exercito.size(); i++){
+            Elfo elfo = exercito.get(i);
+            if (status == elfo.getStatus()){
+                novoArray.add(elfo);
+            }
+        }
+        
+        return novoArray;
+    }
+    
 }
