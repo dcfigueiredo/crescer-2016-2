@@ -1,18 +1,16 @@
 import java.util.ArrayList;
 
 public class ExercitoDeElfos{
-    
+
     private ArrayList <Elfo> exercito = new ArrayList<>();
 
     public Elfo buscarElfoPeloNome(String nomeDoElfo){
         for (int i = 0; i < exercito.size(); i ++){            
             Elfo e = exercito.get(i);
-            if (e instanceof ElfoNoturno && nomeDoElfo.equals(e.getNome())){
-                return (ElfoNoturno)e;
-            } else if (e instanceof ElfoVerde && nomeDoElfo.equals(e.getNome())){
-                return (ElfoVerde)e;
+            if (nomeDoElfo.equals(e.getNome())){             
+                return e;
             }
-        }
+        }    
         return null;
     }
 
