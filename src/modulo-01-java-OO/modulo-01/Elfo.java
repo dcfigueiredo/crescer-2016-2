@@ -58,9 +58,3 @@ public class Elfo extends Personagem{
         return this.mochila.getArrayList().get(1);
     }
 }
-
-/*public void atirarFlechaRefactory() {
-experiencia++;
-flecha.setQuantidade(flecha.getQuantidade()-1);
-}*/
-
