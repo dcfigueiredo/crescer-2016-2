@@ -1,14 +1,14 @@
 import java.util.*;
 public class ExercitoEspecial{
+    
     private HashMap <String,Elfo> exercito = new HashMap();
 
     public void alistarElfo (Elfo elfo){
-        if (elfo instanceof ElfoNoturno){
-            exercito.put(elfo.getNome(), (ElfoNoturno)elfo);
-        } else if (elfo instanceof ElfoVerde){
-            exercito.put(elfo.getNome(), (ElfoVerde)elfo);
+        if (!(elfo instanceof Elfo)){
+            this.exercito.put(elfo.getNome(), elfo);
+
         }
-    }
+    }   
 
     public Elfo[] getContingente (){
         Elfo e[] = new Elfo[exercito.size()];
@@ -30,7 +30,7 @@ public class ExercitoEspecial{
                 arrayDeElfos.add(value);
             }
         }
-        
+
         return arrayDeElfos;
     }
 }
