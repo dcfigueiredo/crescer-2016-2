@@ -35,4 +35,15 @@ public class ExercitoDeElfos{
         return novoArray;
     }
     
+    public Elfo[] getContingente (){
+        Elfo e[] = new Elfo [exercito.size()];
+        e = exercito.toArray(e);
+        return e;
+    }
 }
+
+
+
+
+
+
