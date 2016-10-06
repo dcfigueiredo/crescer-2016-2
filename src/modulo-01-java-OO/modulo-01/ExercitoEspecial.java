@@ -1,5 +1,5 @@
 import java.util.*;
-public class ExercitoEspecial{
+public class ExercitoEspecial implements Exercito{
     private HashMap <String,Elfo> exercito = new HashMap();
 
     public void alistarElfo (Elfo elfo){

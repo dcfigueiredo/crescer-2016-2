@@ -18,8 +18,8 @@ public class ExercitoDeElfosTest{
         exercito.alistarElfo(elfoNoturno1);
         exercito.alistarElfo(elfoVerde1);
 
-        assertEquals(elfoNoturno1, exercito.buscarElfoPeloNome("Elfinho da night"));
-        assertEquals(elfoVerde1, exercito.buscarElfoPeloNome("Elfinho da grama"));
+        assertEquals(elfoNoturno1, exercito.buscar("Elfinho da night"));
+        assertEquals(elfoVerde1, exercito.buscar("Elfinho da grama"));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class ExercitoDeElfosTest{
         Elfo elfoNormal = new Elfo ("asd");
         exercito.alistarElfo(elfoNormal);
 
-        assertEquals(null, exercito.buscarElfoPeloNome("asd"));
+        assertEquals(null, exercito.buscar("asd"));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class ExercitoDeElfosTest{
         Elfo elfoVerde1 = new ElfoVerde("Elfinho da grama");
         exercito.alistarElfo(elfoNoturno1);
         exercito.alistarElfo(elfoVerde1);
-        ArrayList <Elfo> arrayDeElfosVivos = exercito.buscarPorStatus(Status.VIVO);
+        ArrayList <Elfo> arrayDeElfosVivos = exercito.buscar(Status.VIVO);
         assertEquals(elfoNoturno1, arrayDeElfosVivos.get(0));
         assertEquals(elfoVerde1, arrayDeElfosVivos.get(1));
     }
@@ -57,7 +57,7 @@ public class ExercitoDeElfosTest{
             elfoNoturno2.atirarFlecha(new Dwarf("ASD"));
         }
 
-        ArrayList <Elfo> arrayDeElfosVivos = exercito.buscarPorStatus(Status.VIVO);
+        ArrayList <Elfo> arrayDeElfosVivos = exercito.buscar(Status.VIVO);
         assertEquals(elfoNoturno1, arrayDeElfosVivos.get(0));
         assertEquals(elfoVerde1, arrayDeElfosVivos.get(1));
     }

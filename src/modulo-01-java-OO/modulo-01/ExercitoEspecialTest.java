@@ -69,8 +69,7 @@ public class ExercitoEspecialTest{
         assertEquals (ev, exercito.buscar("Xinforinfola"));
 
     }
-    
-    
+        
     @Test
     public void testarBuscarElfoPorNomeEntrandoComoParamentroUmNomeInexistente(){
         ExercitoEspecial exercito = new ExercitoEspecial();

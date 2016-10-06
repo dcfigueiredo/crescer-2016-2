@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class ExercitoDeElfos{
+public class ExercitoDeElfos implements Exercito{
 
     private ArrayList <Elfo> exercito = new ArrayList<>();
 
-    public Elfo buscarElfoPeloNome(String nomeDoElfo){
+    public Elfo buscar(String nomeDoElfo){
         for (int i = 0; i < exercito.size(); i ++){            
             Elfo e = exercito.get(i);
             if (nomeDoElfo.equals(e.getNome())){             
@@ -13,7 +13,7 @@ public class ExercitoDeElfos{
         }    
         return null;
     }
-
+    
     public void alistarElfo (Elfo elfo){
         if (elfo instanceof ElfoNoturno){
             exercito.add((ElfoNoturno)elfo);
@@ -22,7 +22,7 @@ public class ExercitoDeElfos{
         }
     }       
     
-    public ArrayList<Elfo> buscarPorStatus(Status status){
+    public ArrayList<Elfo> buscar(Status status){
         ArrayList<Elfo> novoArray = new ArrayList<>();
         
         for (int i = 0; i < exercito.size(); i++){
