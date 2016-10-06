@@ -3,10 +3,10 @@ public class ExercitoEspecial{
     private HashMap <String,Elfo> exercito = new HashMap();
 
     public void alistarElfo (Elfo elfo){
-        if (elfo instanceof ElfoNoturno){
-            exercito.put(elfo.getNome(), (ElfoNoturno)elfo);
-        } else if (elfo instanceof ElfoVerde){
-            exercito.put(elfo.getNome(), (ElfoVerde)elfo);
+        boolean podeAlistar = elfo instanceof ElfoNoturno || elfo instanceof ElfoVerde;
+        
+        if (podeAlistar){
+            exercito.put(elfo.getNome(), elfo);
         }
     }
 
