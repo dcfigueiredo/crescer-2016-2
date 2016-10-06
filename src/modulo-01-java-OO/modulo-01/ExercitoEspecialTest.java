@@ -58,4 +58,38 @@ public class ExercitoEspecialTest{
         Elfo e[] = exercito.getContingente();
         assertEquals (3, e.length);
     }
+
+    @Test
+    public void testarBuscarElfoPorNome(){
+        ExercitoEspecial exercito = new ExercitoEspecial();
+
+        ElfoVerde ev = new ElfoVerde("Xinforinfola");
+        exercito.alistarElfo(ev);
+
+        assertEquals (ev, exercito.buscar("Xinforinfola"));
+
+    }
+    
+    
+    @Test
+    public void testarBuscarElfoPorNomeEntrandoComoParamentroUmNomeInexistente(){
+        ExercitoEspecial exercito = new ExercitoEspecial();
+
+        ElfoVerde ev = new ElfoVerde("Xinforinfola");
+        exercito.alistarElfo(ev);
+
+        assertEquals (null, exercito.buscar("ParametroInexistente"));
+
+    }
+    
+    @Test
+    public void testarBuscarElfoPorStatus(){
+        ExercitoEspecial exercito = new ExercitoEspecial();
+        
+        ElfoVerde ev = new ElfoVerde("/////");
+        exercito.alistarElfo(ev);
+        
+        assertEquals (1, exercito.buscar(Status.VIVO).size());
+        
+    }
 }
