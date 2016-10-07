@@ -13,37 +13,34 @@ public class ExercitoDeElfos implements Exercito{
         }    
         return null;
     }
-    
+
     public void alistarElfo (Elfo elfo){
-        if (elfo instanceof ElfoNoturno){
-            exercito.add((ElfoNoturno)elfo);
-        } else if (elfo instanceof ElfoVerde){
-            exercito.add((ElfoVerde)elfo);
+        boolean podeAlistar = elfo instanceof ElfoNoturno || elfo instanceof ElfoVerde;
+
+        if (podeAlistar){
+            exercito.add(elfo);
         }
     }       
-    
+
     public ArrayList<Elfo> buscar(Status status){
         ArrayList<Elfo> novoArray = new ArrayList<>();
-        
+
         for (int i = 0; i < exercito.size(); i++){
             Elfo elfo = exercito.get(i);
             if (status == elfo.getStatus()){
                 novoArray.add(elfo);
             }
         }
-        
+
         return novoArray;
     }
-    
+
     public Elfo[] getContingente (){
         Elfo e[] = new Elfo [exercito.size()];
         e = exercito.toArray(e);
         return e;
     }
 }
-
-
-
 
 
 
