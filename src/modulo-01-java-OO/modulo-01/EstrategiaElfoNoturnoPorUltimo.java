@@ -2,7 +2,7 @@ import java.util.*;
 
 public class EstrategiaElfoNoturnoPorUltimo implements Estrategia{
     public List<Elfo> getOrdemDeAtaque(List <Elfo> atacantes){
-        List <Elfo> listaDosVivos = getElfosVivos(atacantes);        
+        List <Elfo> listaDosVivos = filtrarElfosVivos(atacantes);        
         List <Elfo> listaDosElfosNaOrdemCerta = new ArrayList<Elfo>();
         
         for (int i = 0; i < listaDosVivos.size(); i++){
@@ -17,7 +17,7 @@ public class EstrategiaElfoNoturnoPorUltimo implements Estrategia{
         return listaDosElfosNaOrdemCerta;
     }
 
-    private List <Elfo> getElfosVivos(List<Elfo> atacantes){
+    private List <Elfo> filtrarElfosVivos(List<Elfo> atacantes){
         List <Elfo> listaDosVivos = new ArrayList<Elfo>();
 
         for (int i = 0; i < atacantes.size();i ++){
