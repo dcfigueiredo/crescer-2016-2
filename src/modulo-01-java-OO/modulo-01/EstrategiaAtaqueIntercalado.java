@@ -1,7 +1,7 @@
 import java.util.*;
 public class EstrategiaAtaqueIntercalado implements Estrategia{
     public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes) throws ContingenteDesproporcionalException{
-        List <Elfo> listaDosVivos = getElfosVivos(atacantes);
+        List <Elfo> listaDosVivos = filtrarElfosVivos(atacantes);
         List <Elfo> listaOrdenada = new ArrayList <Elfo> ();
         int quantdidadeTotalDeElfos = listaDosVivos.size();
         int quantidadeDeElfosVerdes = 0;
@@ -53,7 +53,7 @@ public class EstrategiaAtaqueIntercalado implements Estrategia{
 
     }
 
-    private List <Elfo> getElfosVivos(List<Elfo> atacantes){
+    private List <Elfo> filtrarElfosVivos(List<Elfo> atacantes){
         List <Elfo> listaDosVivos = new ArrayList<Elfo>();
 
         for (int i = 0; i < atacantes.size();i ++){
