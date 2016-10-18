@@ -52,10 +52,11 @@ select p.idproduto, p.nome from produto p
 ---- 6 ---- Listar UF com maior numero de clientes e UF com menor numero de clientes
 -----------
 
-select UF from cidade cc
-	inner join cliente c on cc.IDCidade = c.IDCidade 
-
-	
+Select TOP 1 Cidade.UF, COUNT(Cliente.IDcidade) as Numero_Clientes
+	from Cidade
+		LEFT OUTER JOIN Cliente on Cidade.IDCidade = Cliente.IDCidade
+		group by Cidade.UF
+		order by Numero_Clientes desc
 
 -----------
 ---- 7 ----
