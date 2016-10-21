@@ -1,0 +1,60 @@
+div.header{
+    position: fixed;
+    background: black;
+    color: white;
+    text-align: center;
+    width: 1400px;;
+    margin-left: auto;
+    top:0;
+    height: 25px;
+    padding-top: 10px;
+}
+div.footer{
+    position: fixed;
+    bottom: 0;
+    width: 1400px;
+    text-align: center;
+    background: black;
+    color: white;
+    height: 25px;
+    padding-top: 10px;
+}/*TO-DO: DRY */
+
+div.quadrado-grande{
+    height: 400px;
+    width: 400px;
+    background: red;
+    position: relative;
+    margin-left: 490px;
+    margin-top: 100px
+}
+div.pequena{
+    height:80px;
+    width:80px;
+    background: yellow;
+    position: absolute;
+}
+        div#superior-esquerda {
+            left: -100px;
+            top: -50px;
+        }
+        
+        div#superior-direita {
+            left: 420px;
+            top: -50px;
+        }
+        
+        div#inferior-esquerda {
+            left: -100px;
+            bottom: -50px;
+        }
+        
+        div#inferior-direita {
+            left: 420px;
+            bottom:-50px;
+        }
+        
+        div#centro {
+            left: 160px;
+            top: 160px;
+        }   
