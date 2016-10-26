@@ -30,8 +30,8 @@ class Herois {
     maisPublicado() { //3
         let maiorQuantidade = 0;
         let heroiComMaisComics;
-        for (let prop in this.arrayDeHerois) {
-            let heroi = this.arrayDeHerois[prop];
+        for (let i = 0; i < this.arrayDeHerois.length; i++) {
+            let heroi = this.arrayDeHerois[i];
             let numeroDeComics = heroi.comics.available;
             if (numeroDeComics > maiorQuantidade) {
                 maiorQuantidade = numeroDeComics;
@@ -56,47 +56,55 @@ class Herois {
         return Math.round(mediaTotal / prop);
     }
 
-    seriesPorLongevidade (){ //5
+    seriesPorLongevidade() { //5
         let seriesOrdenadas = [];
-        for (let prop in this.arrayDeHerois){
-            let heroi = this.arrayDeHerois[prop];
+        for (let i = 0; i < this.arrayDeHerois.length; i++) {
+            let heroi = this.arrayDeHerois[i];
             let seriados = heroi.series.items;
-            for(let key in seriados){
+            for (let key in seriados) {
                 seriesOrdenadas.push(seriados[key]);
             }
         }
         var trocando = true;
-        
-        //BUBBLESORT :)
-        do{
-            trocando = false;
-            for (let i = 0; i < seriesOrdenadas.length - 1; i ++){
-                let longevidade = seriesOrdenadas[i].endYear - seriesOrdenadas[i].startYear;
-                let longevidadeASerComparada = seriesOrdenadas[i+1].endYear - seriesOrdenadas[i+1].startYear;
-                let precisaTrocar = longevidade < longevidadeASerComparada;
-                if (precisaTrocar){
-                    let serieATrocar = seriesOrdenadas[i];
-                    seriesOrdenadas[i] = seriesOrdenadas[i+1];
-                    seriesOrdenadas[i+1] = serieATrocar;
-                    trocando = true;
-                }
-            }
 
-        } while (trocando);
+        seriesOrdenadas.sort(function (elem1, elem2) {
+            let longevidade = elem1.endYear - elem1.startYear;
+            let longevidadeASerComparada = elem2.endYear - elem2.startYear;
+            return longevidadeASerComparada - longevidade;
+        });
+
+        //BUBBLESORT :)
+        // do{
+        //     trocando = false;
+        //     for (let i = 0; i < seriesOrdenadas.length - 1; i ++){
+        //         let longevidade = seriesOrdenadas[i].endYear - seriesOrdenadas[i].startYear;
+        //         let longevidadeASerComparada = seriesOrdenadas[i+1].endYear - seriesOrdenadas[i+1].startYear;
+        //         let precisaTrocar = longevidade < longevidadeASerComparada;
+        //         if (precisaTrocar){
+        //             let serieATrocar = seriesOrdenadas[i];
+        //             seriesOrdenadas[i] = seriesOrdenadas[i+1];
+        //             seriesOrdenadas[i+1] = serieATrocar;
+        //             trocando = true;
+        //         }
+        //     }
+
+        // } while (trocando);
         return seriesOrdenadas;
     }
 
-    comicMaisCara (){
+    comicMaisCara() {
         let comicMaisCara;
         let precoComicMaisCara = 0;
         let somaPrecoComicsPorHeroi = 0;
-        for (let prop in this.arrayDeHerois){
-            let heroi = this.arrayDeHerois[prop];
-            let quadrinhos = heroi.comics.items;
-            for (let key in quadrinhos){
-                somaPrecoComicsPorHeroi += quadrinhos[key].prices[0].price;
-            }
-            if (somaPrecoComicsPorHeroi > precoComicMaisCara){
+        for (let i; heroi < this.arrayDeHerois.length; i++) {
+            let heroi = this.arrayDeHerois[i];
+            let somaPrecoComicsPorHeroi = heroi.comics.items.prices
+
+            // let quadrinhos = heroi.comics.items;
+            // for (let key in quadrinhos){
+            //     somaPrecoComicsPorHeroi += quadrinhos[key].prices[0].price;
+            // }
+            if (somaPrecoComicsPorHeroi > precoComicMaisCara) {
                 precoComicMaisCara = somaPrecoComicsPorHeroi;
                 comicMaisCara = heroi.comics;
             }
