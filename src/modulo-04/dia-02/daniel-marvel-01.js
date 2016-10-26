@@ -40,7 +40,7 @@ class Herois {
     }
 
 
-    mediaDePaginas() {
+    mediaDePaginas() { //4
         let mediaDePaginasDoHeroi = 0;
         let mediaTotal = 0;
         for (var prop in this.arrayDeHerois) {
@@ -54,7 +54,7 @@ class Herois {
         return Math.round(mediaTotal / prop);
     }
 
-    seriesPorLongevidade (){
+    seriesPorLongevidade (){ //5
         let seriesOrdenadas = [];
         for (let prop in this.arrayDeHerois){
             let heroi = this.arrayDeHerois[prop];
@@ -83,5 +83,25 @@ class Herois {
         } while (trocando);
         return seriesOrdenadas;
     }
+
+    comicMaisCara (){
+        let comicMaisCara;
+        let precoComicMaisCara = 0;
+        let somaPrecoComicsPorHeroi = 0;
+        for (let prop in this.arrayDeHerois){
+            let heroi = this.arrayDeHerois[prop];
+            let quadrinhos = heroi.comics.items;
+            for (let key in quadrinhos){
+                somaPrecoComicsPorHeroi += quadrinhos.prices[0].price;
+            }
+            if (somaPrecoComicsPorheroi > precoComicMaisCara){
+                precoComicMaisCara = somaPrecoComicsPorHeroi;
+                comicMaisCara = heroi.comics;
+            }
+
+        }
+        return comicMaisCara;
+    }
+
 }
 
