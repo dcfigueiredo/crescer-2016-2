@@ -1,3 +1,5 @@
+//FALTAM TESTEEEEEEEES
+
 class Herois {
     constructor(array = []) { //1
         this.arrayDeHerois = new Array();
@@ -92,9 +94,9 @@ class Herois {
             let heroi = this.arrayDeHerois[prop];
             let quadrinhos = heroi.comics.items;
             for (let key in quadrinhos){
-                somaPrecoComicsPorHeroi += quadrinhos.prices[0].price;
+                somaPrecoComicsPorHeroi += quadrinhos[key].prices[0].price;
             }
-            if (somaPrecoComicsPorheroi > precoComicMaisCara){
+            if (somaPrecoComicsPorHeroi > precoComicMaisCara){
                 precoComicMaisCara = somaPrecoComicsPorHeroi;
                 comicMaisCara = heroi.comics;
             }
