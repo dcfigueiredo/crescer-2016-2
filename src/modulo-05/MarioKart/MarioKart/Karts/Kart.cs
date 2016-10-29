@@ -7,22 +7,19 @@ using System.Threading.Tasks;
 
 namespace MarioKart.Karts
 {
-    public class Kart
+    public abstract class Kart
     {
         public Kart(Corredor corredor)
         {
             this.Corredor = corredor;
-//            this.velocidade = 3;
             Equipamentos = new List<IEquipamento>();
         }
-        public Corredor Corredor { get; set; }
-        public List<IEquipamento> Equipamentos { get; set; }
-//        private int velocidade { get; set; }
+        protected Corredor Corredor { get;}
+        public List<IEquipamento> Equipamentos { get;}
         public virtual int Velocidade        
         {
             get
-            {
-                //velocidade + bonus dos equipamentos + bonus do corredor
+            {                
                 int somaDosBonusDeEquipamento = SomarBonus();
                 int bonusHabilidadeCorredor = AcharBonusDeHabilidadeDoCorredor();                
 
@@ -30,7 +27,7 @@ namespace MarioKart.Karts
             }
         }
 
-        private int AcharBonusDeHabilidadeDoCorredor()
+        protected internal int AcharBonusDeHabilidadeDoCorredor()
         {
             int bonusHabilidadeCorredor = 0;
             if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Noob)
@@ -48,12 +45,12 @@ namespace MarioKart.Karts
             return bonusHabilidadeCorredor;
         }
 
-        public void AdicionarEquipamento (IEquipamento equipamento)
+        public void AdicionarEquipamento(IEquipamento equipamento)
         {
             this.Equipamentos.Add(equipamento);
         }
 
-        private int SomarBonus()
+        protected internal int SomarBonus()
         {
             if (Equipamentos.Count == 0) return 0;
             int somaDosBonus = 0;
