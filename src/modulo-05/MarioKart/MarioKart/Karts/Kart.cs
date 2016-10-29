@@ -18,28 +18,34 @@ namespace MarioKart.Karts
         public Corredor Corredor { get; set; }
         public List<IEquipamento> Equipamentos { get; set; }
 //        private int velocidade { get; set; }
-        public int Velocidade        
+        public virtual int Velocidade        
         {
             get
             {
                 //velocidade + bonus dos equipamentos + bonus do corredor
                 int somaDosBonusDeEquipamento = SomarBonus();
-                int bonusHabilidadeCorredor = 0;
-                if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Noob)
-                {
-                    bonusHabilidadeCorredor = 3;
-                }
-                else if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Mediano)
-                {
-                    bonusHabilidadeCorredor = 5;
-                }
-                else
-                {
-                    bonusHabilidadeCorredor = 6 + Equipamentos.Count;
-                }
+                int bonusHabilidadeCorredor = AcharBonusDeHabilidadeDoCorredor();                
 
                 return 3 + bonusHabilidadeCorredor + somaDosBonusDeEquipamento;
             }
+        }
+
+        private int AcharBonusDeHabilidadeDoCorredor()
+        {
+            int bonusHabilidadeCorredor = 0;
+            if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Noob)
+            {
+                bonusHabilidadeCorredor = 3;
+            }
+            else if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Mediano)
+            {
+                bonusHabilidadeCorredor = 5;
+            }
+            else
+            {
+                bonusHabilidadeCorredor = 6 + Equipamentos.Count;
+            }
+            return bonusHabilidadeCorredor;
         }
 
         public void AdicionarEquipamento (IEquipamento equipamento)
