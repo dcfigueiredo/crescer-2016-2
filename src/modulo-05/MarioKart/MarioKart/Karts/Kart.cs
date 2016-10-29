@@ -27,7 +27,7 @@ namespace MarioKart.Karts
             }
         }
 
-        protected internal int AcharBonusDeHabilidadeDoCorredor()
+        public virtual int AcharBonusDeHabilidadeDoCorredor()
         {
             int bonusHabilidadeCorredor = 0;
             if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Noob)
