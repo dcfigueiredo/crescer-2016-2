@@ -83,16 +83,7 @@ namespace Repositorio
             Funcionarios.Add(margareteRicardo);
         }
 
-        public IList<Funcionario> BuscarPorCargo(Cargo cargo)
-        {
-            return Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
-        }
-
-        public IList<Funcionario> OrdenadosPorCargo()
-        {
-            var funcionariosOrdenadosPorCargo = (Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome)).ToList();
-            return funcionariosOrdenadosPorCargo;
-        }
+        
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
