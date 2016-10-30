@@ -58,6 +58,7 @@
     <Compile Include="SonnarTest.cs" />
     <Compile Include="FogueteDePlutonioTest.cs" />
     <Compile Include="UltraPackTest.cs" />
+    <Compile Include="SkyFusionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MarioKart\MarioKart.csproj">

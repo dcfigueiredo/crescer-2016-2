@@ -28,21 +28,19 @@ namespace MarioKart.Karts
         }
 
         public virtual int AcharBonusDeHabilidadeDoCorredor()
-        {
-            int bonusHabilidadeCorredor = 0;
+        {            
             if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Noob)
             {
-                bonusHabilidadeCorredor = 3;
+                return 3;
             }
             else if (Corredor.Habilidade == Corredor.NivelDeHabilidade.Mediano)
             {
-                bonusHabilidadeCorredor = 5;
+                return 5;
             }
             else
             {
-                bonusHabilidadeCorredor = 6 + Equipamentos.Count;
+                return 6 + Equipamentos.Count;
             }
-            return bonusHabilidadeCorredor;
         }
 
         public void AdicionarEquipamento(IEquipamento equipamento)
