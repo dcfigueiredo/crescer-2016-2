@@ -12,6 +12,6 @@ namespace MarioKart.Equipamentos
         {
             this.BonusDeVelocidade = 3;
         }
-        public int BonusDeVelocidade { get;}
+        public int BonusDeVelocidade { get; }
     }
 }

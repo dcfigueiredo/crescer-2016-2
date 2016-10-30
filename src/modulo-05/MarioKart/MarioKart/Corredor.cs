@@ -13,7 +13,7 @@ namespace MarioKart
             this.Nome = nome;
             this.Habilidade = habilidade;
         }
-        public enum NivelDeHabilidade { Noob, Mediano, Profissional}
+        public enum NivelDeHabilidade { Noob, Mediano, Profissional }
         public string Nome { get; set; }
         public NivelDeHabilidade Habilidade { get; set; }
 

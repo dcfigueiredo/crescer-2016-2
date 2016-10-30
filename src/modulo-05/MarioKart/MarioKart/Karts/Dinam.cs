@@ -10,17 +10,19 @@ namespace MarioKart.Karts
     {
         public Dinam(Corredor corredor) : base(corredor)
         {
-            
+
         }
         //TO-DO: Achar maneira de chamar o método sobreescrito para não repetir código.
-        public override int Velocidade { get
+        public override int Velocidade
+        {
+            get
             {
                 int somaDosBonusDeEquipamento = SomarBonus();
                 int bonusHabilidadeCorredor = AcharBonusDeHabilidadeDoCorredor();
 
-                return 3 + (bonusHabilidadeCorredor*2) + somaDosBonusDeEquipamento;
+                return 3 + (bonusHabilidadeCorredor * 2) + somaDosBonusDeEquipamento;
             }
         }
-                
+
     }
 }

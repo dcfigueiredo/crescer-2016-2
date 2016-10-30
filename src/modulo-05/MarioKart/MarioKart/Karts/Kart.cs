@@ -14,14 +14,14 @@ namespace MarioKart.Karts
             this.Corredor = corredor;
             Equipamentos = new List<IEquipamento>();
         }
-        protected Corredor Corredor { get;}
-        public List<IEquipamento> Equipamentos { get;}
-        public virtual int Velocidade        
+        protected Corredor Corredor { get; }
+        public List<IEquipamento> Equipamentos { get; }
+        public virtual int Velocidade
         {
             get
-            {                
+            {
                 int somaDosBonusDeEquipamento = SomarBonus();
-                int bonusHabilidadeCorredor = AcharBonusDeHabilidadeDoCorredor();                
+                int bonusHabilidadeCorredor = AcharBonusDeHabilidadeDoCorredor();
 
                 return 3 + bonusHabilidadeCorredor + somaDosBonusDeEquipamento;
             }

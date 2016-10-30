@@ -8,7 +8,7 @@ namespace MarioKart.Karts
 {
     public class Light : Kart
     {
-        public Light(Corredor corredor) :base (corredor)
+        public Light(Corredor corredor) : base(corredor)
         {
 
         }
