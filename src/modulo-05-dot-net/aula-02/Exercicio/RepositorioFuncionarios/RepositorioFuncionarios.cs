@@ -121,7 +121,24 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            throw new NotImplementedException();
+            if (turno != null)
+            {
+                var funcionariosDoTurno = Funcionarios.Where(funcionario => funcionario.TurnoTrabalho == turno).ToList();
+                var salarioTotalDoTurno = 0.0;
+                for (var i = 0; i < funcionariosDoTurno.Count(); i++)
+                {
+                    salarioTotalDoTurno += funcionariosDoTurno[i].Cargo.Salario;
+                }
+                return salarioTotalDoTurno / funcionariosDoTurno.Count();
+            } else
+            {
+                var somaDeTodosOsSalarios = 0.0;
+                for (var i = 0; i < Funcionarios.Count(); i++)
+                {
+                    somaDeTodosOsSalarios += Funcionarios[i].Cargo.Salario;
+                }
+                return somaDeTodosOsSalarios / Funcionarios.Count();
+            }
         }
 
         public IList<Funcionario> AniversariantesDoMes()
