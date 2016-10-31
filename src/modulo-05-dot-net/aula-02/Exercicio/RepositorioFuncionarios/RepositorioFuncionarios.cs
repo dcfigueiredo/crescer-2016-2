@@ -85,29 +85,39 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            return Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
+            return this.Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
         }
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            var funcionariosOrdenadosPorCargo = (Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome)).ToList();
-            return funcionariosOrdenadosPorCargo;
+            return (this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome)).ToList();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
-        }        
+            return this.Funcionarios.Where(funcionario => funcionario.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) > 0).ToList();
+        }
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
             throw new NotImplementedException();
-        }        
+        }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            throw new NotImplementedException();
-        }        
+            var idadeMinima = idade - 5;
+            var idadeMaxima = idade + 5;
+            return this.Funcionarios.Where(funcionario =>
+            {
+                var idadeDoFuncionario = DateTime.Now.Year - funcionario.DataNascimento.Year;
+                bool idadeNoAlcance = idadeDoFuncionario >= idadeMinima && idadeDoFuncionario <= idadeMaxima;
+                if (idadeNoAlcance)
+                {
+                    return true;
+                }
+                return false;
+            }).ToList();
+        }
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
