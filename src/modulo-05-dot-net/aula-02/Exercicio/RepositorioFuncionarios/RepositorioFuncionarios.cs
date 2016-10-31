@@ -124,7 +124,7 @@ namespace Repositorio
 
             //Método colírio para os olhos :)
             if (turno != null)
-            {
+            {                
                 var funcionariosDoTurno = this.Funcionarios.Where(funcionario => funcionario.TurnoTrabalho == turno).ToList();
                 return funcionariosDoTurno.Sum(funcionairo => funcionairo.Cargo.Salario) / funcionariosDoTurno.Count;
             }
@@ -156,7 +156,7 @@ namespace Repositorio
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            throw new NotImplementedException();
+            return this.Funcionarios.Where(funcionario => funcionario.DataNascimento.Month == DateTime.Now.Month).ToList();
         }
 
         public IList<dynamic> BuscaRapida()
