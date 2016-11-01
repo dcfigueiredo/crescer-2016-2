@@ -38,9 +38,9 @@ div {
     background-color: silver;
 }
 
-#sobre{
+#sobre {
     background-repeat: no-repeat;
-    background-image: url(wander.jpg);           
+    background-image: url('Imagens/wander.jpg');
 }
 #blanka {
     background-repeat: no-repeat;

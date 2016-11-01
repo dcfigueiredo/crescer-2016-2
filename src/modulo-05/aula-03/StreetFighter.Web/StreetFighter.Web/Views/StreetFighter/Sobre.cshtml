@@ -1,22 +1,20 @@
 ﻿@{
-    ViewBag.Title = "FichaTecnica";
+    ViewBag.Title = "Sobre";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="titulo">
     <h1>
-        Ficha-Técnica
+        Sobre
     </h1>
 </div>
-
-
-<div class="corpo" id="blanka">
+<div class="corpo" id="sobre">
     <h2>@Model.Nome</h2>
     <p class="ficha-tecnica">
         <strong>Primeira aparição:</strong> @Model.PrimeiraAparicao.<br>
-        <strong>Nascimento:</strong> @Model.Nascimento.Day/@Model.Nascimento.Month/@Model.Nascimento.Year.<br>
-        <strong>Altura:</strong> @Model.Altura cm<br>
-        <strong>Peso:</strong> @Model.Peso kg<br>
+        <strong>Nascimento:</strong> @Model.Nascimento.Day/@Model.Nascimento.Month/@Model.Nascimento.Day<br>
+        <strong>Altura:</strong> @Model.Altura cm.<br>
+        <strong>Peso:</strong> @Model.Peso kg.<br>
         <strong>Medidas:</strong> @Model.Medidas.<br>
         <strong>Tipo sanguíneo:</strong> @Model.TipoSanguineo.<br>
         <strong>Habilidades especiais:</strong>
@@ -31,60 +29,62 @@
                 {
                     <text> @habilidade,</text>
                 }
-
             }
-        }<br>
+
+        }
+        <br>
         <strong>Gosta:</strong>
         @{
-            foreach (var @gosto in Model.Gosta)
+            foreach (var @gosta in Model.Gosta)
             {
-                if (Model.Gosta.IndexOf(gosto) == Model.Gosta.Count - 1)
+                if (Model.Gosta.IndexOf(gosta) == Model.Gosta.Count - 1)
                 {
-                    <text>  @gosto.</text>
+                    <text> @gosta.</text>
                 }
                 else
                 {
-                    <text>  @gosto,</text>
+                    <text> @gosta,</text>
                 }
             }
-        }<br>
+        } <br>
         <strong>Desgosta:</strong>
         @{
-            foreach (var @desgosto in Model.Desgosta)
+            foreach (var @desgosta in Model.Desgosta)
             {
-                if (Model.Desgosta.IndexOf(desgosto) == Model.Desgosta.Count - 1)
+                if (Model.Desgosta.IndexOf(desgosta) == Model.Desgosta.Count - 1)
                 {
-                    <text>@desgosto.</text>
+                    <text> @desgosta.</text>
                 }
                 else
                 {
-                    <text>@desgosto,</text>
+                    <text> @desgosta,</text>
                 }
-
             }
+
         }<br>
         <strong>Estilo de luta:</strong> @Model.EstiloDeLuta.<br>
         <strong>Origem:</strong> @Model.Origem.<br>
         <strong>Uma	fala de vitória:</strong> @Model.FalaVitoria.<br>
-        <strong>SSF2 nickname:</strong> @Model.NickName1.<br>
-        <strong>SFA3 nickname:</strong> @Model.NickName2.<br>
-        <strong>SF4 nickname:</strong> @Model.NickName3.<br>
-        <strong>SFA3 stage:</strong> @Model.Stage1.<br>
-        <strong>SF2 stage:</strong> @Model.Stage2. <br>
+        <strong>Crescer-M1 nickname:</strong> @Model.NickName1.<br>
+        <strong>Crescer-M2 nickname:</strong> @Model.NickName2.<br>
+        <strong>Crescer-M3 nickname:</strong> @Model.NickName3.<br>
+        <strong>Crescer-M1 stage:</strong> @Model.Stage1.<br>
+        <strong>Crescer-M2 stage:</strong> @Model.Stage2.<br>
         <strong>Golpes especiais famosos:</strong>
         @{
             foreach (var @golpes in Model.GolpesEspeciaisFamosos)
             {
-                if (Model.GolpesEspeciaisFamosos.IndexOf(golpes) == Model.Desgosta.Count - 1)
+                if (Model.GolpesEspeciaisFamosos.IndexOf(golpes) == Model.GolpesEspeciaisFamosos.Count - 1)
                 {
-                    <text>  @golpes.</text>
+                    <text> @golpes.</text>
                 }
                 else
                 {
-                    <text>  @golpes,</text>
+                    <text> @golpes,</text>
                 }
-
             }
-        }
+
+        }<br>
     </p>
 </div>
+

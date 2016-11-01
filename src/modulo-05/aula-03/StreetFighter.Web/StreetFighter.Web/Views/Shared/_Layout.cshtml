@@ -6,19 +6,16 @@
 <meta charset="UTF-8">
 <!DOCTYPE html>
 <html>
-
 <head>
     <link href="~/Content/street.css" rel="stylesheet" />
 </head>
-
 <body>
     <div id="cabecalho">
-        <a href="StreetFighter.html"> Início </a>
+        <a href="~/Views/StreetFighter/Index.cshtml">Início</a>        
         <a href="https://www.google.com.br/?gfe_rd=cr&ei=g70IWNGiA5Gq8we025LABQ#q=street+fighter&tbm=nws"> Notícias </a>
-        <a href="ficha-tecnica.html"> Ficha-Técnica </a>
-        <a href="sobre.html"> Sobre </a>
+        <a href="~/Views/StreetFighter/FichaTecnica.cshtml"> Ficha-Técnica </a>
+        <a href="~/Views/StreetFighter/Sobre.cshtml">Sobre</a>
     </div>        
     @RenderBody()
 </body>
-
 </html>
