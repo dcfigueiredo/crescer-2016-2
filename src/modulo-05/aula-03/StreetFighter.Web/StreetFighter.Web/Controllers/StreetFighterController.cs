@@ -66,6 +66,11 @@ namespace StreetFighter.Web.Controllers
             model.Stage2 = "Torre do Carvão (Brasil)";
             model.GolpesEspeciaisFamosos = new List<string>() { "CTRL+C", "CTRL+V" };
             return View(model);
+        }
+        
+        public ActionResult ListaDePersonagens()
+        {
+            return View();
         }        
 
 
