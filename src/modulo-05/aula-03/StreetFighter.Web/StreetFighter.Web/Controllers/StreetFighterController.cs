@@ -16,34 +16,36 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
+        public ActionResult Cadastro(FichaTecnicaModel model)
+        {
+            PoupularListaOrigem();
+            if (ModelState.IsValid)
+            {
+                ViewBag.Mensagem = "Cadastro concluido com sucesso.";
+                return View("~/Views/StreetFighter/FichaTecnica.cshtml", model);
+            }
+            else
+            {             
+                return View("~/Views/StreetFighter/Cadastro.cshtml");
+            }
+        }
+        
         public ActionResult FichaTecnica()
         {
             var model = new FichaTecnicaModel();
             model.Nome = "Blanka";
-            model.PrimeiraAparicao = "Street Figther II The World Warrior";
-            model.Nascimento = new DateTime(1966,02,12);
+            model.Nascimento = new DateTime(1966, 02, 12);
             model.Altura = 192;
             model.Peso = 96;
-            model.Medidas = "B198, C120, Q172";
-            model.TipoSanguineo = "B";
-            model.HabilidadesEspeciais = new List<String>() { "Caçar", "Eletricidade" };
-            model.Gosta = new List<String>() { "Frutas Tropicais", "Piracuru", "Sua Mãe" };
-            model.Desgosta = new List<String>() { "Army Ants (Espécide de formiga)" };
-            model.EstiloDeLuta = "Luta Selvagem autodidata (Army Ants) / Capoeira";
             model.Origem = "Brasil (lugar de nascença é provável que seja Tailândia)";
-            model.FalaVitoria = "Ver você em ação é uma piada";
-            model.NickName1 = "A selvagem criança da natureza";
-            model.NickName2 = "A animal pessoa amazonica";
-            model.NickName3 = "Guerreiro da selva";
-            model.Stage1 = "Ramificação do Rio Madeira - pantano, Brasil (ramificação do Rio Madeira: talvez possa ser Mato Grosso, ou Tocantins";
-            model.Stage2 = "Bacia do rio Amazonas (Brasil)";
-            model.GolpesEspeciaisFamosos = new List<string>() { "Eletric Thunder", "Rolling Attack" };
+            model.GolpesEspeciaisFamosos = "Eletric Thunder, Rolling Attack";
+            model.Oculto = false;
             return View(model);
         }
 
         public ActionResult Sobre()
         {
-            var model = new FichaTecnicaModel();
+            var model = new SobreModel();
             model.Nome = "Daniel";
             model.PrimeiraAparicao = "Crescer Edição 2016-2";
             model.Nascimento = new DateTime(1993, 09, 22);
@@ -64,6 +66,21 @@ namespace StreetFighter.Web.Controllers
             model.Stage2 = "Torre do Carvão (Brasil)";
             model.GolpesEspeciaisFamosos = new List<string>() { "CTRL+C", "CTRL+V" };
             return View(model);
+        }        
+
+
+        private void PoupularListaOrigem()
+        {
+            ViewData["ListaOrigem"] = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value = "PRU", Text = "Peru"},
+                new SelectListItem() { Value = "JAP", Text = "Japão"},
+                new SelectListItem() { Value = "CAN", Text = "Canada"},
+                new SelectListItem() { Value = "IND", Text = "India"},
+                new SelectListItem() { Value = "NEZ", Text = "Nova Zelandia"},
+                new SelectListItem() { Value = "GER", Text = "Alemanha"},
+            };
         }
     }
 }
+
