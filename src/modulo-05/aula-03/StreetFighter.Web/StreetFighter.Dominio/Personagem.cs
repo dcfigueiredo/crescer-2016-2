@@ -9,8 +9,9 @@ namespace StreetFighter.Dominio
     public class Personagem
     {
 
-        public Personagem(string nome, DateTime nascimento, int altura, double peso, string origem, string golpesFamosos, bool oculto)
+        public Personagem(int id, string nome, DateTime nascimento, int altura, double peso, string origem, string golpesFamosos, bool oculto)
         {
+            this.Id = id;
             this.Nome = nome;
             this.Nascimento = nascimento;
             this.Altura = altura;
@@ -18,6 +19,12 @@ namespace StreetFighter.Dominio
             this.Origem = origem;
             this.GolpesEspeciaisFamosos = golpesFamosos;
             this.Oculto = oculto;
+        }
+
+        public override string ToString()
+        {
+            var propriedadesInterpoladas = $"{Id};{Nome};{Nascimento.ToString()};{Altura};{Peso};{Origem};{GolpesEspeciaisFamosos};{Oculto.ToString()}";
+            return propriedadesInterpoladas;
         }
 
         public int Id { get; set; }
