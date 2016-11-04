@@ -78,10 +78,10 @@ namespace StreetFighter.Web.Controllers
         {
             List<Personagem> lista = new List<Personagem>()
             {
-                new Personagem("Blanka",new DateTime(2010,10,10), 10, 5.5,"Brasil", "Alahuakabar", false),
-                new Personagem("Guile",new DateTime(2010,10,10), 30, 15.0,"America", "Alexfool", false),
-                new Personagem("Balrog",new DateTime(2010,05,15), 1000, 50.5,"Tailandia", "Tiger robocop", true),
-                new Personagem("Eu",new DateTime(2010,10,09), 1, 1.5,"Brasil", "CtrlC", false),                
+                new Personagem(0, "Blanka",new DateTime(2010,10,10), 10, 5.5,"Brasil", "Alahuakabar", false),
+                new Personagem(1, "Guile",new DateTime(2010,10,10), 30, 15.0,"America", "Alexfool", false),
+                new Personagem(2, "Balrog",new DateTime(2010,05,15), 1000, 50.5,"Tailandia", "Tiger robocop", true),
+                new Personagem(3, "Eu",new DateTime(2010,10,09), 1, 1.5,"Brasil", "CtrlC", false),                
             };
             return lista;
         }
