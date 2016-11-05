@@ -27,23 +27,10 @@ namespace StreetFighter.Repositorio
             }
         }
 
-        private Personagem CriarPersonagem(string[] propriedadesSeparadas)
-        {
-            var id = Int32.Parse(propriedadesSeparadas[0]);
-            var nome = propriedadesSeparadas[1];
-            var nascimento = DateTime.Parse(propriedadesSeparadas[2]);
-            var altura = Int32.Parse(propriedadesSeparadas[3]);
-            var peso = Double.Parse(propriedadesSeparadas[4]);
-            var origem = propriedadesSeparadas[5];
-            var golpes = propriedadesSeparadas[6];
-            var oculto = bool.Parse(propriedadesSeparadas[7]);
-            Personagem personagem = new Personagem(id, nome, nascimento, altura, peso, origem, golpes, oculto);
-            return personagem;
-        }
 
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
-            throw new NotImplementedException();
+            return ListaDePersonagens.Where(personagem => personagem.Nome.Equals(filtroNome)).ToList(); 
         }
 
         public void IncluirPersonagem(Personagem personagem)
@@ -59,7 +46,28 @@ namespace StreetFighter.Repositorio
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            this.ListaDePersonagens.Remove(personagem);
+            File.Create(caminhoDoBanco);
+            using (StreamWriter writer = new StreamWriter(caminhoDoBanco))
+            {
+                foreach (var personagemDaLista in ListaDePersonagens)
+                {
+                    writer.WriteLine(personagem.ToString());
+                }
+            }
+        }
+
+        private Personagem CriarPersonagem(string[] propriedadesSeparadas)
+        {
+            var nome = propriedadesSeparadas[1];
+            var nascimento = DateTime.Parse(propriedadesSeparadas[2]);
+            var altura = Int32.Parse(propriedadesSeparadas[3]);
+            var peso = Double.Parse(propriedadesSeparadas[4]);
+            var origem = propriedadesSeparadas[5];
+            var golpes = propriedadesSeparadas[6];
+            var oculto = bool.Parse(propriedadesSeparadas[7]);
+            Personagem personagem = new Personagem(nome, nascimento, altura, peso, origem, golpes, oculto);
+            return personagem;
         }
     }
 }
