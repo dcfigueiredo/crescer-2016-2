@@ -30,7 +30,7 @@ namespace StreetFighter.Repositorio
 
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
-            return ListaDePersonagens.Where(personagem => personagem.Nome.Equals(filtroNome)).ToList(); 
+            return ListaDePersonagens.Where(personagem => personagem.Nome.Equals(filtroNome)).ToList();
         }
 
         public void IncluirPersonagem(Personagem personagem)
@@ -41,18 +41,32 @@ namespace StreetFighter.Repositorio
 
         public void EditarPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            foreach (var personagemDaLista in ListaDePersonagens)
+            {
+                if (personagem.Id == personagemDaLista.Id)
+                {
+                    var posicao = ListaDePersonagens.IndexOf(personagemDaLista);
+                    ListaDePersonagens[posicao] = personagem;
+                    ReescreverBanco();
+                    break;
+                }
+            }
         }
 
         public void ExcluirPersonagem(Personagem personagem)
         {
             this.ListaDePersonagens.Remove(personagem);
+            ReescreverBanco();
+        }
+
+        private void ReescreverBanco()
+        {
             File.Create(caminhoDoBanco);
             using (StreamWriter writer = new StreamWriter(caminhoDoBanco))
             {
                 foreach (var personagemDaLista in ListaDePersonagens)
                 {
-                    writer.WriteLine(personagem.ToString());
+                    writer.WriteLine(personagemDaLista.ToString());
                 }
             }
         }
