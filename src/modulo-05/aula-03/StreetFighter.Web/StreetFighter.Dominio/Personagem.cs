@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace StreetFighter.Dominio
 {
     public class Personagem
-    {
-
-        public Personagem(int id, string nome, DateTime nascimento, int altura, double peso, string origem, string golpesFamosos, bool oculto)
+    {        
+        public Personagem(string nome, DateTime nascimento, int altura, double peso, string origem, string golpesFamosos, bool oculto)
         {
-            this.Id = id;
+            Id = ++ id;
             this.Nome = nome;
             this.Nascimento = nascimento;
             this.Altura = altura;
@@ -27,6 +26,7 @@ namespace StreetFighter.Dominio
             return propriedadesInterpoladas;
         }
 
+        private static int id = 0;
         public int Id { get; set; }
 
         public String Imagem { get; set; }
