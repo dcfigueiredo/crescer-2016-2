@@ -11,15 +11,15 @@ namespace StreetFighter.Repositorio
     public class PersonagemRepositorio : IPersonagemRepositorio
     {
 
-        const string caminhoDoBanco = @"C:\Users\daniel.figueiredo\crescer-2016-2\src\modulo-05\aula-03\StreetFighter.Web\StreetFighter.Repositorio\banco.txt";
+        const string caminhoDoBanco = @"C:\Users\Daiane Figueiredo\crescer-2016-2\src\modulo-05\aula-03\StreetFighter.Web\StreetFighter.Repositorio\banco.txt";
         public List<Personagem> ListaDePersonagens { get; private set; } = new List<Personagem>();
 
 
         public PersonagemRepositorio()
         {
-            var personagens = File.ReadAllLines(caminhoDoBanco).ToList();
+            var personagensDoArquivo = File.ReadAllLines(caminhoDoBanco).ToList();
 
-            foreach (var personagem in personagens)
+            foreach (var personagem in personagensDoArquivo)
             {
                 var propriedadesSeparadas = personagem.Split(';');
                 Personagem personagemASerListado = CriarPersonagem(propriedadesSeparadas);
@@ -35,15 +35,28 @@ namespace StreetFighter.Repositorio
 
         public void IncluirPersonagem(Personagem personagem)
         {
-            this.ListaDePersonagens.Add(personagem);
-            File.AppendAllText(caminhoDoBanco, Environment.NewLine + personagem.ToString());
+            bool editou = false;
+            foreach (var personagemDaLista in ListaDePersonagens)
+            {
+                if (personagemDaLista.Equals(personagem))
+                {
+                    EditarPersonagem(personagem);
+                    editou = true;
+                    break;
+                }
+            }
+            if(!editou)
+            {
+                this.ListaDePersonagens.Add(personagem);
+                ReescreverBanco();
+            }
         }
 
         public void EditarPersonagem(Personagem personagem)
         {
             foreach (var personagemDaLista in ListaDePersonagens)
             {
-                if (personagem.Id == personagemDaLista.Id)
+                if (personagem.Equals(personagemDaLista))
                 {
                     var posicao = ListaDePersonagens.IndexOf(personagemDaLista);
                     ListaDePersonagens[posicao] = personagem;
@@ -61,7 +74,7 @@ namespace StreetFighter.Repositorio
 
         private void ReescreverBanco()
         {
-            File.Create(caminhoDoBanco);
+            File.AppendAllText(caminhoDoBanco, "");
             using (StreamWriter writer = new StreamWriter(caminhoDoBanco))
             {
                 foreach (var personagemDaLista in ListaDePersonagens)
