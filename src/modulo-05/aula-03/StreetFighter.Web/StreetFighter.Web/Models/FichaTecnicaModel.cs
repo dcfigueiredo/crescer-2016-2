@@ -18,7 +18,7 @@ namespace StreetFighter.Web.Models
         [Required]
         public int Altura { get; set; }
         [Required]
-        public int Peso { get; set; }
+        public double Peso { get; set; }
         [Required]
         public String Origem { get; set; }
         [Required][DisplayName("Golpes Famosos")]
