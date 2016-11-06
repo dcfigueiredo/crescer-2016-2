@@ -30,7 +30,7 @@ namespace StreetFighter.Repositorio
 
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
-            return ListaDePersonagens.Where(personagem => personagem.Nome.Equals(filtroNome)).ToList();
+            return ListaDePersonagens.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
         }
 
         public void IncluirPersonagem(Personagem personagem)

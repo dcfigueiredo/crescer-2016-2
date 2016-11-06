@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using StreetFighter.Web.Models;
 using StreetFighter.Dominio;
+using StreetFighter.Aplicativo;
 
 namespace StreetFighter.Web.Controllers
 {
@@ -18,18 +19,22 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult Cadastro(FichaTecnicaModel model)
         {
-            PoupularListaOrigem();
+            PopularOrigem();
             if (ModelState.IsValid)
             {
+                Personagem personagem = CriarPersonagem(model);
+                PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo(); //???
+                personagemAplicativo.Salvar(personagem);
                 ViewBag.Mensagem = "Cadastro concluido com sucesso.";
-                return View("~/Views/StreetFighter/FichaTecnica.cshtml", model);
+                return View("~/Views/StreetFighter/Cadastro.cshtml");
             }
             else
-            {             
+            {
+                ViewBag.Mensagem = "Cadastro inválido";
                 return View("~/Views/StreetFighter/Cadastro.cshtml");
             }
         }
-        
+
         public ActionResult FichaTecnica()
         {
             var model = new FichaTecnicaModel();
@@ -67,35 +72,33 @@ namespace StreetFighter.Web.Controllers
             model.GolpesEspeciaisFamosos = new List<string>() { "CTRL+C", "CTRL+V" };
             return View(model);
         }
-        
+
         public ActionResult ListaDePersonagens()
         {
-            var model = PopularListaDePersonagens();
-            return View(model);
-        }        
-
-        private List<Personagem> PopularListaDePersonagens()
-        {
-            List<Personagem> lista = new List<Personagem>()
-            {
-                new Personagem(0, "Blanka",new DateTime(2010,10,10), 10, 5.5,"Brasil", "Alahuakabar", false),
-                new Personagem(1, "Guile",new DateTime(2010,10,10), 30, 15.0,"America", "Alexfool", false),
-                new Personagem(2, "Balrog",new DateTime(2010,05,15), 1000, 50.5,"Tailandia", "Tiger robocop", true),
-                new Personagem(3, "Eu",new DateTime(2010,10,09), 1, 1.5,"Brasil", "CtrlC", false),                
-            };
-            return lista;
+            return View();
         }
 
-        private void PoupularListaOrigem()
+        private Personagem CriarPersonagem(FichaTecnicaModel model)
+        {
+            var nome = model.Nome;
+            var nascimento = model.Nascimento;
+            var altura = model.Altura;
+            var peso = model.Peso;
+            var origem = model.Origem;
+            var golpes = model.GolpesEspeciaisFamosos;
+            var oculto = model.Oculto;
+            return new Personagem(nome, nascimento, altura, peso, origem, golpes, oculto);
+        }
+
+        private void PopularOrigem()
         {
             ViewData["ListaOrigem"] = new List<SelectListItem>()
             {
-                new SelectListItem() { Value = "PRU", Text = "Peru"},
-                new SelectListItem() { Value = "JAP", Text = "Japão"},
-                new SelectListItem() { Value = "CAN", Text = "Canada"},
-                new SelectListItem() { Value = "IND", Text = "India"},
-                new SelectListItem() { Value = "NEZ", Text = "Nova Zelandia"},
+                new SelectListItem() { Value = "BRA", Text = "Brasil"},
                 new SelectListItem() { Value = "GER", Text = "Alemanha"},
+                new SelectListItem() { Value = "IND", Text = "India"},
+                new SelectListItem() { Value = "JAP", Text = "Japão"},
+                new SelectListItem() { Value = "MDP", Text = "Morro da Pedra"}
             };
         }
     }
