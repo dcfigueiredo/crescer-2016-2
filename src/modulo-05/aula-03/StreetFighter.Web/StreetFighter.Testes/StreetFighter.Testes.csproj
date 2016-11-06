@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy, Version=2.3.1.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.2.3.1\lib\net40\FakeItEasy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Aplicativo\PersonagemAplicativoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PersonagemRepositorioTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dominio\" />
@@ -63,6 +68,21 @@
       <Project>{8f78628e-223a-4209-8936-4870b8a9100d}</Project>
       <Name>StreetFighter.Aplicativo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
+      <Project>{c2f7f7e4-49a7-4803-a652-2611cb7205dd}</Project>
+      <Name>StreetFighter.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreetFighter.Repositorio\StreetFighter.Repositorio.csproj">
+      <Project>{bee84863-1f2c-4e02-bad6-d2890078602d}</Project>
+      <Name>StreetFighter.Repositorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreetFighter.Web\StreetFighter.Web.csproj">
+      <Project>{d848d36c-3108-4593-90b9-26330a09d34c}</Project>
+      <Name>StreetFighter.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
