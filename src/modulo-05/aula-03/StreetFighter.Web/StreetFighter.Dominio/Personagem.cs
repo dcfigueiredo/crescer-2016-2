@@ -26,6 +26,18 @@ namespace StreetFighter.Dominio
             return propriedadesInterpoladas;
         }
 
+        public bool Equals(Personagem personagem)
+        {
+            if (this.Id == personagem.Id || this.Nome == personagem.Nome)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private static int id = 0;
         public int Id { get; set; }
 
