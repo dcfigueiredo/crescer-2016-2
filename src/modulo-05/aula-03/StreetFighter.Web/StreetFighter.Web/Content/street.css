@@ -43,11 +43,8 @@ div {
     background-repeat: no-repeat;
     background-image: url('Imagens/wander.jpg');
 }
-.personagem{
-    display: inline;
-    padding: 30px;    
-    margin: 10px;
-    background-color: red;
+.personagem{    
+    display: inline
 }
 
 p.ficha-tecnica{

@@ -81,11 +81,19 @@ namespace StreetFighter.Web.Controllers
             return View(model);
         }
 
-        public ActionResult ListaDePersonagens()
+        public ActionResult ListaDePersonagens(string filtroNome)
         {
             PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
-            var model = personagemAplicativo.ListarPersonagens("");
-            return View(model);
+            if (filtroNome == null)
+            {
+                var model = personagemAplicativo.ListarPersonagens("");
+                return View(model);
+            }
+            else
+            {
+                var model = personagemAplicativo.ListarPersonagens(filtroNome);
+                return View(model);
+            }
         }
 
         private Personagem CriarPersonagem(FichaTecnicaModel model)
