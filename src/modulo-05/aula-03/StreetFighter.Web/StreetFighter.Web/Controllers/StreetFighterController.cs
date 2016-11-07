@@ -35,17 +35,25 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
-        public ActionResult FichaTecnica()
+        public ActionResult FichaTecnica(int idPersonagem)
         {
-            var model = new FichaTecnicaModel();
-            model.Nome = "Blanka";
-            model.Nascimento = new DateTime(1966, 02, 12);
-            model.Altura = 192;
-            model.Peso = 96;
-            model.Origem = "Brasil (lugar de nascença é provável que seja Tailândia)";
-            model.GolpesEspeciaisFamosos = "Eletric Thunder, Rolling Attack";
-            model.Oculto = false;
+            var model = CriarModel(idPersonagem);
             return View(model);
+        }
+
+        private FichaTecnicaModel CriarModel(int id)
+        {
+            PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
+            var personagemDaLista = personagemAplicativo.EncontrarPersonagem(id);
+            var model = new FichaTecnicaModel();
+            model.Nome = personagemDaLista.Nome;
+            model.Nascimento = personagemDaLista.Nascimento;
+            model.Altura = personagemDaLista.Altura;
+            model.Peso = personagemDaLista.Peso;
+            model.Origem = personagemDaLista.Origem;
+            model.GolpesEspeciaisFamosos = personagemDaLista.GolpesEspeciaisFamosos;
+            model.Oculto = personagemDaLista.Oculto;
+            return model;
         }
 
         public ActionResult Sobre()
@@ -75,7 +83,9 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult ListaDePersonagens()
         {
-            return View();
+            PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
+            var model = personagemAplicativo.ListarPersonagens("");
+            return View(model);
         }
 
         private Personagem CriarPersonagem(FichaTecnicaModel model)

@@ -9,15 +9,13 @@
         Lista de Personagens
     </h1>
 </div>
-<div class="corpo">    
-    <div>
-        @{
-            foreach (var personagem in Model)
-            {
-                <span style="margin: 5px; padding: 20px; background-color: red">
-                    @personagem.Nome
-                </span>
-            }
+<div class="corpo">
+    @{
+        foreach (var personagem in Model)
+        {
+            <div class="personagem">                
+                @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
+            </div>
         }
-    </div>
+    }
 </div>
