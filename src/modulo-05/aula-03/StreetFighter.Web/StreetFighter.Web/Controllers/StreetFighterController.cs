@@ -37,11 +37,11 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult FichaTecnica(int idPersonagem)
         {
-            var model = CriarModel(idPersonagem);
-            return View(model);
+            //var model = CriarModel(idPersonagem);
+            return View();
         }
 
-        private FichaTecnicaModel CriarModel(int id)
+        /*private FichaTecnicaModel CriarModel(int id)
         {
             PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
             var personagemDaLista = personagemAplicativo.EncontrarPersonagem(id);
@@ -54,7 +54,7 @@ namespace StreetFighter.Web.Controllers
             model.GolpesEspeciaisFamosos = personagemDaLista.GolpesEspeciaisFamosos;
             model.Oculto = personagemDaLista.Oculto;
             return model;
-        }
+        }*/
 
         public ActionResult Sobre()
         {

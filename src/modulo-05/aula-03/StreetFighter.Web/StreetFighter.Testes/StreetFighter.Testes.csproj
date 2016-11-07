@@ -56,11 +56,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Aplicativo\PersonagemAplicativoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PersonagemRepositorioTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Aplicativo\" />
     <Folder Include="Dominio\" />
   </ItemGroup>
   <ItemGroup>

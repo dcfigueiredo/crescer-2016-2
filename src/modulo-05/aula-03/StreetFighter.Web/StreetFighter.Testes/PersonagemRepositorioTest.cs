@@ -10,7 +10,7 @@ namespace StreetFighter.Testes
     [TestClass]
     public class PersonagemRepositorioTest
     {
-        const string caminhoDoBanco = @"C:\Users\Daiane Figueiredo\crescer-2016-2\src\modulo-05\aula-03\StreetFighter.Web\StreetFighter.Repositorio\banco.txt";
+        const string caminhoDoBanco = @"C:\Users\daniel.figueiredo\crescer-2016-2\src\modulo-05\aula-03\StreetFighter.Web\StreetFighter.Repositorio\banco.txt";
         [TestMethod]
         public void TestarSeEstaIncluindoPersonagemNaListaENoArquivo()
         {
