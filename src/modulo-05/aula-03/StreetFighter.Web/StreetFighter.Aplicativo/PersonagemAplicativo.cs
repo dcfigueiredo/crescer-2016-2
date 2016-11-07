@@ -27,6 +27,11 @@ namespace StreetFighter.Aplicativo
             return repositorio.ListarPersonagens(filtroNome);
         }
 
+        public Personagem EncontrarPersonagem(int id)
+        {
+            return repositorio.EncontrarPersonagem(id);
+        }
+
         public void Salvar(Personagem personagem)
         {
             repositorio.IncluirPersonagem(personagem);

@@ -45,7 +45,7 @@ namespace StreetFighter.Repositorio
                     break;
                 }
             }
-            if(!editou)
+            if (!editou)
             {
                 this.ListaDePersonagens.Add(personagem);
                 ReescreverBanco();
@@ -72,6 +72,18 @@ namespace StreetFighter.Repositorio
             ReescreverBanco();
         }
 
+        public Personagem EncontrarPersonagem(int id)
+        {
+            foreach (var personagem in ListaDePersonagens)
+            {
+                if (personagem.Id == id)
+                {
+                    return personagem;
+                }
+            }
+            return null;
+        }
+
         private void ReescreverBanco()
         {
             File.AppendAllText(caminhoDoBanco, "");
@@ -86,6 +98,7 @@ namespace StreetFighter.Repositorio
 
         private Personagem CriarPersonagem(string[] propriedadesSeparadas)
         {
+            var id = Int32.Parse(propriedadesSeparadas[0]);
             var nome = propriedadesSeparadas[1];
             var nascimento = DateTime.Parse(propriedadesSeparadas[2]);
             var altura = Int32.Parse(propriedadesSeparadas[3]);
@@ -93,7 +106,7 @@ namespace StreetFighter.Repositorio
             var origem = propriedadesSeparadas[5];
             var golpes = propriedadesSeparadas[6];
             var oculto = bool.Parse(propriedadesSeparadas[7]);
-            Personagem personagem = new Personagem(nome, nascimento, altura, peso, origem, golpes, oculto);
+            Personagem personagem = new Personagem(id, nome, nascimento, altura, peso, origem, golpes, oculto);
             return personagem;
         }
     }
