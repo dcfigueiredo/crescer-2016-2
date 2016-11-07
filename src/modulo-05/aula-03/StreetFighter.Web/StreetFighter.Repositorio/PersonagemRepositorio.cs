@@ -51,13 +51,37 @@ namespace StreetFighter.Repositorio
 
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
-            return null; //ListaDePersonagens.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
+
+            if (filtroNome == null || filtroNome.Equals(""))
+            {
+                filtroNome = "%";
+            }
+
+            List<Personagem> listaDePersonagens = new List<Personagem>();
+            string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"]
+                                                          .ConnectionString;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = $"SELECT * FROM Personagem WHERE Nome LIKE '%@param_filtro%'";
+                var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(new SqlParameter("param_filtro", filtroNome));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Personagem personagem = ConverterParaPersonagem(reader);
+                    listaDePersonagens.Add(personagem);
+                }
+                connection.Close();
+            }
+                return listaDePersonagens; //ListaDePersonagens.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
         }
 
         public void IncluirPersonagem(Personagem personagem)
         {
-
-
             string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"]
                                                                       .ConnectionString;
 
@@ -70,7 +94,6 @@ namespace StreetFighter.Repositorio
                     string sql = "";
                     var parameters = new List<SqlParameter>();
                     
-
                     if (personagem.Id > 0)
                     {
                         sql = $"UPDATE Personagem SET Nome = @param_nome, Set Nascimento = @param_nascimento, Set Altura = @param_altura," +
@@ -103,7 +126,6 @@ namespace StreetFighter.Repositorio
                     {
                         command.Parameters.Add(parametro);
                     }
-
                     command.ExecuteNonQuery();
                     transaction.Complete();
                 }
@@ -144,6 +166,21 @@ namespace StreetFighter.Repositorio
         {
             //this.ListaDePersonagens.Remove(personagem);
             //ReescreverBanco();
+        }
+
+        private Personagem ConverterParaPersonagem(SqlDataReader reader)
+        {
+            var id = Convert.ToInt32(reader["Id"]);
+            var nome = reader["Nome"].ToString();
+            var nascimento = Convert.ToDateTime(reader["Nascimento"]);
+            var altura = Convert.ToInt32(reader["Altura"]);
+            var peso = Convert.ToDouble(reader["Peso"]);
+            var origem = reader["Origem"].ToString();
+            var golpes = reader["GolpesFamosos"].ToString();
+            //var oculto = Convert.ToBoolean(reader["Oculto"]);
+
+            return new Personagem(id, nome, nascimento, altura, peso, origem, golpes, false);
+
         }
 
         /*public Personagem EncontrarPersonagem(int id)
