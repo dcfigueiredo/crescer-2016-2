@@ -37,25 +37,10 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult FichaTecnica(int idPersonagem)
         {
-            //var model = CriarModel(idPersonagem);
-            return View();
+            var model = CriarModel(idPersonagem);
+            return View(model);
         }
-
-        /*private FichaTecnicaModel CriarModel(int id)
-        {
-            PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
-            var personagemDaLista = personagemAplicativo.EncontrarPersonagem(id);
-            var model = new FichaTecnicaModel();
-            model.Nome = personagemDaLista.Nome;
-            model.Nascimento = personagemDaLista.Nascimento;
-            model.Altura = personagemDaLista.Altura;
-            model.Peso = personagemDaLista.Peso;
-            model.Origem = personagemDaLista.Origem;
-            model.GolpesEspeciaisFamosos = personagemDaLista.GolpesEspeciaisFamosos;
-            model.Oculto = personagemDaLista.Oculto;
-            return model;
-        }*/
-
+       
         public ActionResult Sobre()
         {
             var model = new SobreModel();
@@ -94,6 +79,21 @@ namespace StreetFighter.Web.Controllers
                 var model = personagemAplicativo.ListarPersonagens(filtroNome);
                 return View(model);
             }
+        }
+
+        private FichaTecnicaModel CriarModel(int id)
+        {
+            PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
+            var personagemDaLista = personagemAplicativo.EncontrarPersonagem(id);
+            var model = new FichaTecnicaModel();
+            model.Nome = personagemDaLista.Nome;
+            model.Nascimento = personagemDaLista.Nascimento;
+            model.Altura = personagemDaLista.Altura;
+            model.Peso = personagemDaLista.Peso;
+            model.Origem = personagemDaLista.Origem;
+            model.GolpesEspeciaisFamosos = personagemDaLista.GolpesEspeciaisFamosos;
+            model.Oculto = personagemDaLista.Oculto;
+            return model;
         }
 
         private Personagem CriarPersonagem(FichaTecnicaModel model)

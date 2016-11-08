@@ -131,22 +131,35 @@ namespace StreetFighter.Repositorio
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            //this.ListaDePersonagens.Remove(personagem);
-            //ReescreverBanco();
-        }
+            
+        }                
 
-        private static List<SqlParameter> ListarParametrosDoPersonagem(Personagem personagem)
+        public Personagem EncontrarPersonagem(int id)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("param_Id", personagem.Id));
-            parameters.Add(new SqlParameter("param_nome", personagem.Nome));
-            parameters.Add(new SqlParameter("param_nascimento", personagem.Nascimento));
-            parameters.Add(new SqlParameter("param_altura", personagem.Altura));
-            parameters.Add(new SqlParameter("param_peso", personagem.Peso));
-            parameters.Add(new SqlParameter("param_origem", personagem.Origem));
-            parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
-            parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
-            return parameters;
+            string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"].
+                                                           ConnectionString;
+
+            Personagem personagem = null;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = $"SELECT * FROM Personagem WHERE ID = @param_id";
+                var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(new SqlParameter("param_id", id));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    personagem = ConverterParaPersonagem(reader);
+                }
+
+                connection.Close();
+
+            }
+            return personagem;
         }
 
         private Personagem ConverterParaPersonagem(SqlDataReader reader)
@@ -163,17 +176,19 @@ namespace StreetFighter.Repositorio
             return new Personagem(id, nome, nascimento, altura, peso, origem, golpes, oculto);
         }
 
-        /*public Personagem EncontrarPersonagem(int id)
+        private static List<SqlParameter> ListarParametrosDoPersonagem(Personagem personagem)
         {
-            foreach (var personagem in ListaDePersonagens)
-            {
-                if (personagem.Id == id)
-                {
-                    return personagem;
-                }
-            }
-            return null;
-        }*/
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("param_Id", personagem.Id));
+            parameters.Add(new SqlParameter("param_nome", personagem.Nome));
+            parameters.Add(new SqlParameter("param_nascimento", personagem.Nascimento));
+            parameters.Add(new SqlParameter("param_altura", personagem.Altura));
+            parameters.Add(new SqlParameter("param_peso", personagem.Peso));
+            parameters.Add(new SqlParameter("param_origem", personagem.Origem));
+            parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
+            parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
+            return parameters;
+        }
 
         /*private void ReescreverBanco()        
         {
