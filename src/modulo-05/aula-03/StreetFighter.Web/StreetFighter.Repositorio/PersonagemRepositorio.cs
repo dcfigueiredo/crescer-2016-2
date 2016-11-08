@@ -12,25 +12,11 @@ using System.Transactions;
 namespace StreetFighter.Repositorio
 {
     public class PersonagemRepositorio : IPersonagemRepositorio
-    {
-
-        //const string caminhoDoBanco = @"C:\Users\daniel.figueiredo\crescer-2016-2\src\modulo-05\aula-03\StreetFighter.Web\StreetFighter.Repositorio\banco.txt";
-        //public List<Personagem> ListaDePersonagens { get; private set; } = new List<Personagem>();
-
+    {        
 
         public PersonagemRepositorio()
         {
-            //CarregarListaDoBanco();
-
-            //Modo Arquivo
-            /*var personagensDoArquivo = File.ReadAllLines(caminhoDoBanco).ToList();
-
-            foreach (var personagem in personagensDoArquivo)
-            {
-                var propriedadesSeparadas = personagem.Split(';');
-                Personagem personagemASerListado = CriarPersonagem(propriedadesSeparadas);
-                this.ListaDePersonagens.Add(personagemASerListado);
-            }*/
+            
         }
      
         public List<Personagem> ListarPersonagens(string filtroNome)
@@ -61,7 +47,7 @@ namespace StreetFighter.Repositorio
                 }
                 connection.Close();
             }
-                return listaDePersonagens; //ListaDePersonagens.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
+                return listaDePersonagens;
         }
 
         public void IncluirPersonagem(Personagem personagem)
@@ -104,24 +90,7 @@ namespace StreetFighter.Repositorio
                 {
                     connection.Close();
                 }
-            }
-
-
-            /*bool editou = false;
-            foreach (var personagemDaLista in ListaDePersonagens)
-            {
-                if (personagemDaLista.Equals(personagem))
-                {
-                    EditarPersonagem(personagem);
-                    editou = true;
-                    break;
-                }
-            }
-            if (!editou)
-            {
-                this.ListaDePersonagens.Add(personagem);
-                //ReescreverBanco();
-            }*/
+            }            
         }        
 
         public void ExcluirPersonagem(int id)
@@ -214,20 +183,7 @@ namespace StreetFighter.Repositorio
             parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
             parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
             return parameters;
-        }
-
-        /*private void ReescreverBanco()        
-        {
-            File.AppendAllText(caminhoDoBanco, "");
-            using (StreamWriter writer = new StreamWriter(caminhoDoBanco))
-            {
-                foreach (var personagemDaLista in ListaDePersonagens)
-                {
-                    writer.WriteLine(personagemDaLista.ToString());
-                }
-            }
-        }*/
-
+        }        
     }
 }
 

@@ -49,9 +49,9 @@
       <Project>{c2f7f7e4-49a7-4803-a652-2611cb7205dd}</Project>
       <Name>StreetFighter.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StreetFighter.Repositorio\StreetFighter.Repositorio.csproj">
-      <Project>{bee84863-1f2c-4e02-bad6-d2890078602d}</Project>
-      <Name>StreetFighter.Repositorio</Name>
+    <ProjectReference Include="..\StreetFighter.RepositorioEF\StreetFighter.RepositorioEF.csproj">
+      <Project>{f0006911-7afa-449b-ab34-0f4d91690b89}</Project>
+      <Name>StreetFighter.RepositorioEF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
