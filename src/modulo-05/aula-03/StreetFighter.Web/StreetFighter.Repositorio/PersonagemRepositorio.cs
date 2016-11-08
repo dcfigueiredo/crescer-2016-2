@@ -122,17 +122,43 @@ namespace StreetFighter.Repositorio
                 this.ListaDePersonagens.Add(personagem);
                 //ReescreverBanco();
             }*/
-        }
+        }        
 
+        public void ExcluirPersonagem(int id)
+        {
+
+            string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"]
+                                                                      .ConnectionString;
+
+            using (var transaction = new TransactionScope(TransactionScopeOption.Required))
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "DELETE FROM Personagem WHERE Id = @param_id";
+
+                    var command = new SqlCommand(sql, connection);
+                    command.Parameters.Add(new SqlParameter("param_id", id));
+
+                    command.ExecuteNonQuery();
+
+                    transaction.Complete();
+                }
+                catch (NotImplementedException ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         public void EditarPersonagem(Personagem personagem)
         {
 
         }
-
-        public void ExcluirPersonagem(Personagem personagem)
-        {
-            
-        }                
 
         public Personagem EncontrarPersonagem(int id)
         {

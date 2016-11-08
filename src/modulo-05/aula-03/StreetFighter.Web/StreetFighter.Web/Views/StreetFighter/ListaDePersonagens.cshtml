@@ -25,15 +25,16 @@
             </div>
         </div>
     }
-
-    @{
+    <form method="post">
         <ul>
             @foreach (var personagem in Model)
             {
-            <li class="personagem">
-                @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
-            </li>
+                <li class="personagem">
+                    @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
+                    <input type="submit" formaction="/StreetFighter/Excluir/@personagem.Id" value="Excluir" />
+
+                </li>
             }
         </ul>
-    }
+    </form>
 </div>

@@ -81,6 +81,15 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
+        public ActionResult Excluir (int id)
+        {
+
+            PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();
+            personagemAplicativo.Excluir(id);
+
+            return RedirectToAction("ListaDePersonagens");
+        }
+
         private FichaTecnicaModel CriarModel(int id)
         {
             PersonagemAplicativo personagemAplicativo = new PersonagemAplicativo();

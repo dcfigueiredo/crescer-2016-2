@@ -37,9 +37,9 @@ namespace StreetFighter.Aplicativo
             repositorio.IncluirPersonagem(personagem);
         }
 
-        public void Excluir(Personagem personagem)
+        public void Excluir(int id)
         {
-            repositorio.ExcluirPersonagem(personagem);
+            repositorio.ExcluirPersonagem(id);
         }
     }
 }
