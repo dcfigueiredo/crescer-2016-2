@@ -32,23 +32,7 @@ namespace StreetFighter.Repositorio
                 this.ListaDePersonagens.Add(personagemASerListado);
             }*/
         }
-
-
-
-        private Personagem ConverterSQLparaPersonagem(SqlDataReader reader)
-        {
-            var id = Convert.ToInt32(reader["Id"]);
-            var nome = reader["Nome"].ToString();
-            var origem = reader["Origem"].ToString();
-            var nascimento = Convert.ToDateTime(reader["Nascimento"]);
-            var altura = Convert.ToInt32(reader["Altura"]);
-            var peso = Convert.ToDouble(reader["Peso"]);
-            var oculto = Convert.ToBoolean(reader["Oculto"]);
-            var golpes = reader["GolpesEspeciais"].ToString();
-
-            return new Personagem(id, nome, nascimento, altura, peso, origem, golpes, oculto);
-        }
-
+     
         public List<Personagem> ListarPersonagens(string filtroNome)
         {
 
@@ -64,7 +48,7 @@ namespace StreetFighter.Repositorio
             {
                 connection.Open();
 
-                string sql = $"SELECT * FROM Personagem WHERE Nome LIKE '%@param_filtro%'";
+                string sql = $"SELECT * FROM Personagem WHERE Nome LIKE @param_filtro";
                 var command = new SqlCommand(sql, connection);
                 command.Parameters.Add(new SqlParameter("param_filtro", filtroNome));
 
@@ -92,33 +76,16 @@ namespace StreetFighter.Repositorio
                 {
                     connection.Open();
                     string sql = "";
-                    var parameters = new List<SqlParameter>();
-                    
+                    var parameters = ListarParametrosDoPersonagem(personagem);
                     if (personagem.Id > 0)
                     {
                         sql = $"UPDATE Personagem SET Nome = @param_nome, Set Nascimento = @param_nascimento, Set Altura = @param_altura," +
-                              $" Set Peso = @param_peso, Set Origem = @param_origem, Set GolpesEspeciais = @param_golpes, Set Oculto = @param_oculto) WHERE Id = @param_Id";
-                        parameters.Add(new SqlParameter("param_Id", personagem.Id));
-                        parameters.Add(new SqlParameter("param_nome", personagem.Nome));
-                        parameters.Add(new SqlParameter("param_nascimento", personagem.Nascimento));
-                        parameters.Add(new SqlParameter("param_altura", personagem.Altura));
-                        parameters.Add(new SqlParameter("param_peso", personagem.Peso));
-                        parameters.Add(new SqlParameter("param_origem", personagem.Origem));
-                        parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
-                        parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
+                              $" Set Peso = @param_peso, Set Origem = @param_origem, Set GolpesFamosos = @param_golpes, Set Oculto = @param_oculto) WHERE Id = @param_Id";                        
                     }
                     else
                     {
-                        sql = $"INSERT INTO Personagem (Nome, Nascimento, Altura, Peso, Origem, GolpesEspeciais, Oculto)" +
+                        sql = $"INSERT INTO Personagem (Nome, Nascimento, Altura, Peso, Origem, GolpesFamosos, Oculto)" +
                               $"VALUES (@param_nome, @param_nascimento, @param_altura, @param_peso, @param_origem, @param_golpes, @param_oculto)";
-                        parameters.Add(new SqlParameter("param_Id", personagem.Id));
-                        parameters.Add(new SqlParameter("param_nome", personagem.Nome));
-                        parameters.Add(new SqlParameter("param_nascimento", personagem.Nascimento));
-                        parameters.Add(new SqlParameter("param_altura", personagem.Altura));
-                        parameters.Add(new SqlParameter("param_peso", personagem.Peso));
-                        parameters.Add(new SqlParameter("param_origem", personagem.Origem));
-                        parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
-                        parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
                     }
                     var command = new SqlCommand(sql, connection);
 
@@ -168,6 +135,20 @@ namespace StreetFighter.Repositorio
             //ReescreverBanco();
         }
 
+        private static List<SqlParameter> ListarParametrosDoPersonagem(Personagem personagem)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("param_Id", personagem.Id));
+            parameters.Add(new SqlParameter("param_nome", personagem.Nome));
+            parameters.Add(new SqlParameter("param_nascimento", personagem.Nascimento));
+            parameters.Add(new SqlParameter("param_altura", personagem.Altura));
+            parameters.Add(new SqlParameter("param_peso", personagem.Peso));
+            parameters.Add(new SqlParameter("param_origem", personagem.Origem));
+            parameters.Add(new SqlParameter("param_golpes", personagem.GolpesEspeciaisFamosos));
+            parameters.Add(new SqlParameter("param_oculto", personagem.Oculto));
+            return parameters;
+        }
+
         private Personagem ConverterParaPersonagem(SqlDataReader reader)
         {
             var id = Convert.ToInt32(reader["Id"]);
@@ -177,10 +158,9 @@ namespace StreetFighter.Repositorio
             var peso = Convert.ToDouble(reader["Peso"]);
             var origem = reader["Origem"].ToString();
             var golpes = reader["GolpesFamosos"].ToString();
-            //var oculto = Convert.ToBoolean(reader["Oculto"]);
+            var oculto = Convert.ToInt32(reader["Oculto"]) == 0 ? false : true;
 
-            return new Personagem(id, nome, nascimento, altura, peso, origem, golpes, false);
-
+            return new Personagem(id, nome, nascimento, altura, peso, origem, golpes, oculto);
         }
 
         /*public Personagem EncontrarPersonagem(int id)

@@ -27,11 +27,13 @@
     }
 
     @{
-        foreach (var personagem in Model)
-        {
-            <div class="personagem">
+        <ul>
+            @foreach (var personagem in Model)
+            {
+            <li class="personagem">
                 @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
-            </div>
-        }
+            </li>
+            }
+        </ul>
     }
 </div>
