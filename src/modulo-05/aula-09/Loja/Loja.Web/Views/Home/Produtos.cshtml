@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Produtos</title>
+</head>
+<body>
+    @ViewBag.Mensagem
+    <div>
+        @using (Html.BeginForm("Cadastrar", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.TextBox("nome", "", new { placeholder = "Nome do produto" })
+            @Html.TextBox("valor", "", new { placeholder = "Valor do produto" })
+
+            <button type="submit">Cadastrar</button>
+        }
+
+        @{
+            <ul>
+                @if (Model != null)
+                {
+                    foreach (var produto in Model)
+                    {
+                        <li>
+                            <span>@produto.Nome</span>
+                            <span>@produto.Valor</span>
+                            <span><button type="submit">Editar</button></span>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    </div>
+</body>
+</html>
