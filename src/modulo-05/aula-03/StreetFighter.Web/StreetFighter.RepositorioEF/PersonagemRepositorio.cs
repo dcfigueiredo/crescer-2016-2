@@ -1,6 +1,7 @@
 ﻿using StreetFighter.Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,30 @@ namespace StreetFighter.RepositorioEF
 {
     public class PersonagemRepositorio : IPersonagemRepositorio
     {
-        public void EditarPersonagem(Personagem personagem)
+        public void EditarPersonagem(int id)
         {
-            throw new NotImplementedException();
+            using (var contexto = new DatabaseContext())
+            {
+                Personagem personagemPraEditar = EncontrarPersonagem(id); 
+                contexto.Entry(personagemPraEditar).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
         }
 
-        public List<Personagem> ListarPersonagens(string filtroNome = "")
+        public IList<Personagem> ListarPersonagens(string filtroNome)
         {                        
             using (var contexto = new DatabaseContext())
             {
-                IQueryable<Personagem> query = contexto.Personagem.Where(personagem => personagem.Nome.Contains(filtroNome));
-                return query.ToList();                
-            }
+                if (!String.IsNullOrEmpty(filtroNome))
+                {
+                    return contexto.Personagem.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
+                }
+                else
+                {
+                    filtroNome = "";
+                    return contexto.Personagem.Where(personagem => personagem.Nome.Contains(filtroNome)).ToList();
+                }
+            }            
         }
 
         public Personagem EncontrarPersonagem(int id)
@@ -34,14 +47,18 @@ namespace StreetFighter.RepositorioEF
 
         public void ExcluirPersonagem(int id)
         {
-            throw new NotImplementedException();
+            using (var contexto = new DatabaseContext())
+            {
+                contexto.Entry(EncontrarPersonagem(id)).State = EntityState.Deleted;
+                contexto.SaveChanges();
+            }
         }
 
         public void IncluirPersonagem(Personagem personagem)
         {
             using(var contexto = new DatabaseContext())
             {
-                contexto.Entry(personagem).State = System.Data.Entity.EntityState.Added;
+                contexto.Entry(personagem).State = EntityState.Added;
                 contexto.SaveChanges();
             }
         }        
