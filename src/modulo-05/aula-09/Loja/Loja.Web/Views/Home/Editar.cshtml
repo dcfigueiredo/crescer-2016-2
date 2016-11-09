@@ -1,0 +1,26 @@
+﻿@model Loja.Dominio.Produto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Editar", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.TextBox("nome", "", new { placeholder = "Nome do produto" })
+            @Html.TextBox("valor", "", new { placeholder = "Valor do produto" })
+
+            <button type="submit">Editar</button>
+        }
+    </div>
+</body>
+</html>
