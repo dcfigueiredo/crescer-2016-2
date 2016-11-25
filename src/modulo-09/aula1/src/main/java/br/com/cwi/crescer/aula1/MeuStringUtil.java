@@ -16,34 +16,43 @@ public class MeuStringUtil {
             System.out.print("1 - Identificar palindromo.\r2 - Inverter String\r3 - Contar vogais\r0 - Sair ");
             try {
                 int opcao = Integer.parseInt(scanner.nextLine());
-                if (opcao == 0) {
-                    menu = false;
-                } else if (opcao == 1) {
-                    System.out.print("Informe uma palavra ou frase: ");
-                    String string = scanner.nextLine();
-                    if (!validarStringVazia(string)) {
-                        System.out.println(identificarPalindromo(string) ? "É um palindromo" : "Não é um palindromo");
-                    } else {
-                        System.out.println("Palavra vazia.");
-                    } 
-                } else if (opcao == 2) {
-                    System.out.print("Informe uma palavra ou frase: ");
-                    String string = scanner.nextLine();
-                    if (!validarStringVazia(string)) {
-                        System.out.println("Invertida: " + inverterString(string));
-                    } else {
-                        System.out.println("Palavra vazia.");
+                switch (opcao) {
+                    case 0:
+                        menu = false;
+                        break;
+                    case 1: {
+                        System.out.print("Informe uma palavra ou frase: ");
+                        String string = scanner.nextLine();
+                        if (!validarStringVazia(string)) {
+                            System.out.println(identificarPalindromo(string) ? "É um palindromo" : "Não é um palindromo");
+                        } else {
+                            System.out.println("Palavra vazia.");
+                        }
+                        break;
                     }
-                } else if (opcao == 3){
-                    System.out.print("Informe uma palavra ou frase: ");
-                    String string = scanner.nextLine();
-                    if (!validarStringVazia(string)) {
-                        System.out.println("Quantidade de vogais: " + qtdVogais(string));
-                    } else{
-                        System.out.println("Palavra vazia.");
+                    case 2: {
+                        System.out.print("Informe uma palavra ou frase: ");
+                        String string = scanner.nextLine();
+                        if (!validarStringVazia(string)) {
+                            System.out.println("Invertida: " + inverterString(string));
+                        } else {
+                            System.out.println("Palavra vazia.");
+                        }
+                        break;
                     }
-                } else{
-                    System.out.println("Opção invalida.");
+                    case 3: {
+                        System.out.print("Informe uma palavra ou frase: ");
+                        String string = scanner.nextLine();
+                        if (!validarStringVazia(string)) {
+                            System.out.println("Quantidade de vogais: " + qtdVogais(string));
+                        } else {
+                            System.out.println("Palavra vazia.");
+                        }
+                        break;
+                    }
+                    default:
+                        System.out.println("Opção invalida.");
+                        break;
                 }
             } catch (Exception ex) {
                 System.out.println("Opção invalida.");
@@ -95,6 +104,6 @@ public class MeuStringUtil {
     }
 
     public static boolean validarStringVazia(String string) {
-        return string.isEmpty();
+        return string == null ||string.isEmpty();
     }
 }
