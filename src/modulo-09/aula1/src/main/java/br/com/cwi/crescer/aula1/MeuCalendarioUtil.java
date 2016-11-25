@@ -15,19 +15,38 @@ public class MeuCalendarioUtil {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean menu = true;
+        do {
+            System.out.println("Selecione uma das opções abaixo: ");
+            System.out.print("1 - Diferença entre data de hoje e outra data\r2 - Dia do Nascimento\r0 - Sair:     ");
+            try {
+                int opcao = Integer.parseInt(scanner.nextLine());
+                switch (opcao) {
+                    case 0:
+                        System.out.println("Programa encerrado.");
+                        menu = false;
+                        break;
+                    case 1:
+                        System.out.println("Insira uma data: ");
+                        String data = scanner.nextLine();
+                        diferencaDeData(data);
+                        break;
+                    case 2:
+                        System.out.println("Insira a data de nascimento: ");
+                        String dataNascimento = scanner.nextLine();
+                        exibirDiaNascimento(dataNascimento);
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                        break;
+                }
 
-        System.out.print("Data do nascimento: ");
-        String data = scanner.nextLine();
-
-        System.out.println("Dia em que nasceu: " + exibirDiaNascimento(data));
-        
-        System.out.print("Digite a data para a qualquer saber a diferença: ");
-        data = scanner.nextLine();
-        
-        diferencaDeData(data);
-
+            } catch (Exception ex) {
+                System.out.println("Opção inválida." + ex);
+            }
+        } while (menu);
     }
-    
+
     //TO-DO: Achar uma maneira mais elegante de fazer isso
     public static String diferencaDeData(String data) {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,22 +73,21 @@ public class MeuCalendarioUtil {
         int difMes = mesAgora - mesAntes;
         int difDia = diaAgora - diaAntes;
 
-        System.out.println(difAno > 1 ? difAno + " Anos" : difAno + " Ano");
-        System.out.println(difMes > 1 ? difMes + " Meses" : difMes + " Mes");
-        System.out.println(difDia > 1 ? difDia + " Dias" : difDia + " Dia");
+        System.out.print(difAno > 1 ? difAno + " Anos, " : difAno + " Ano, ");
+        System.out.print(difMes > 1 ? difMes + " Meses, " : difMes + " Mes, ");
+        System.out.print(difDia > 1 ? difDia + " Dias." : difDia + " Dia.\r");
 
         return null;
     }
 
-    public static String exibirDiaNascimento(String dataNascimento) {
+    public static void exibirDiaNascimento(String dataNascimento) {
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             Date nascimento = formato.parse(dataNascimento);
-            return (new SimpleDateFormat("EEEE").format(nascimento));
+            System.out.println((new SimpleDateFormat("EEEE").format(nascimento)));
         } catch (ParseException ex) {
             System.out.println("Data informada no formato errado" + ex);
         }
-        return null;
     }
 }
