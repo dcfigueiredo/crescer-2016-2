@@ -9,22 +9,46 @@ import java.util.Scanner;
 public class MeuStringUtil {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Informe uma palavra ou frase: ");
-        String string = scanner.nextLine();
-
-        boolean ehVazia = validarStringVazia(string);
-
-        if (!ehVazia) {
-            System.out.println(identificarPalindromo(string) ? "É um palindromo." : "Não é um plaindromo.");
-            System.out.println("Invertida: " + inverterString(string));
-            System.out.println("Quantidade de vogais: " + qtdVogais(string));
-            System.out.println("");
-        } else {
-            System.out.println("A palavra é vazia.");
-        }
+        boolean menu = true;
+        do {
+            System.out.println("Selecione uma das opções abaixo: ");
+            System.out.print("1 - Identificar palindromo.\r2 - Inverter String\r3 - Contar vogais\r0 - Sair ");
+            try {
+                int opcao = Integer.parseInt(scanner.nextLine());
+                if (opcao == 0) {
+                    menu = false;
+                } else if (opcao == 1) {
+                    System.out.print("Informe uma palavra ou frase: ");
+                    String string = scanner.nextLine();
+                    if (!validarStringVazia(string)) {
+                        System.out.println(identificarPalindromo(string) ? "É um palindromo" : "Não é um palindromo");
+                    } else {
+                        System.out.println("Palavra vazia.");
+                    } 
+                } else if (opcao == 2) {
+                    System.out.print("Informe uma palavra ou frase: ");
+                    String string = scanner.nextLine();
+                    if (!validarStringVazia(string)) {
+                        System.out.println("Invertida: " + inverterString(string));
+                    } else {
+                        System.out.println("Palavra vazia.");
+                    }
+                } else if (opcao == 3){
+                    System.out.print("Informe uma palavra ou frase: ");
+                    String string = scanner.nextLine();
+                    if (!validarStringVazia(string)) {
+                        System.out.println("Quantidade de vogais: " + qtdVogais(string));
+                    } else{
+                        System.out.println("Palavra vazia.");
+                    }
+                } else{
+                    System.out.println("Opção invalida.");
+                }
+            } catch (Exception ex) {
+                System.out.println("Opção invalida.");
+            }
+        } while (menu);
     }
 
     public static boolean identificarPalindromo(String string) {
