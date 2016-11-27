@@ -30,7 +30,7 @@ public class MeuFileUtils {
                 System.out.println("Arquivo não encontrado ou invalido");
             }
         } else if (args[0].equals("ls") && args.length == 2) {
-            if (args[1].contains(".txt")) {
+            if (args[1].endsWith(".txt")) {
                 System.out.println("Caminho absoluto: " + new File(args[1]).getAbsolutePath());
             } else {
                 String[] arquivos = new File(args[1]).list();
@@ -53,7 +53,7 @@ public class MeuFileUtils {
         File f = new File(nomeArquivo);
         try {
             if (!f.exists()) {
-                if (nomeArquivo.contains(".txt")) {
+                if (nomeArquivo.endsWith(".txt")) {
                     return f.createNewFile();
                 } else {
                     return f.mkdir();
@@ -66,7 +66,7 @@ public class MeuFileUtils {
     }
 
     public static boolean deletarArquivo(String nomeArquivo) {
-        if (nomeArquivo.contains(".txt")) {
+        if (nomeArquivo.endsWith(".txt")) {
             return new File(nomeArquivo).delete();
         }
         return false;
@@ -76,5 +76,5 @@ public class MeuFileUtils {
         File f = new File (args[1]);
         String caminho = args[2];        
         return f.renameTo(new File(caminho + f.getName()));        
-    }
+    }       
 }
