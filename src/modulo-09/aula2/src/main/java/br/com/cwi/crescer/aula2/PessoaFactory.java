@@ -18,11 +18,10 @@ import java.sql.Statement;
 public class PessoaFactory {
 
     public static void main(String[] args) {
-        final PessoaFactory pf = new PessoaFactory();
-        pf.inserir();
+        create();
     }
     
-    public void create (){
+    public static void create (){
         final String ddl = "CREATE TABLE DANIEL ("
                 + " ID_PESSOA NUMBER(19,0) NOT NULL, "
                 + " NM_PESSOA VARCHAR2(50) NOT NULL, "
