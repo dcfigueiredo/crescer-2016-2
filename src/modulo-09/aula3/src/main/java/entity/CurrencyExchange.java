@@ -44,4 +44,38 @@ public class CurrencyExchange implements Serializable{
     @Basic(optional = false)
     @Column(name = "VL_RATE")
     private Double vlRate;
+
+    public Long getIdCurrencyExchange() {
+        return idCurrencyExchange;
+    }
+
+    public void setIdCurrencyExchange(Long idCurrencyExchange) {
+        this.idCurrencyExchange = idCurrencyExchange;
+    }
+
+    public String getDsCoin() {
+        return dsCoin;
+    }
+
+    public void setDsCoin(String dsCoin) {
+        this.dsCoin = dsCoin;
+    }
+
+    public String getDtCurrencyExchange() {
+        return dtCurrencyExchange;
+    }
+
+    public void setDtCurrencyExchange(String dtCurrencyExchange) {
+        this.dtCurrencyExchange = dtCurrencyExchange;
+    }
+
+    public Double getVlRate() {
+        return vlRate;
+    }
+
+    public void setVlRate(Double vlRate) {
+        this.vlRate = vlRate;
+    }
+    
+    
 }

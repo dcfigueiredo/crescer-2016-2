@@ -69,4 +69,86 @@ public class Cotacao implements Serializable{
     @Basic(optional = false)
     @Column(name = "DT_COTACAO")
     private String dtCotacao;
+
+    public Long getIdCotacao() {
+        return idCotacao;
+    }
+
+    public void setIdCotacao(Long idCotacao) {
+        this.idCotacao = idCotacao;
+    }
+
+    public Double getDsCotacaoDollarAustraliano() {
+        return dsCotacaoDollarAustraliano;
+    }
+
+    public void setDsCotacaoDollarAustraliano(Double dsCotacaoDollarAustraliano) {
+        this.dsCotacaoDollarAustraliano = dsCotacaoDollarAustraliano;
+    }
+
+    public Double getDsCotacaoDollarCanadense() {
+        return dsCotacaoDollarCanadense;
+    }
+
+    public void setDsCotacaoDollarCanadense(Double dsCotacaoDollarCanadense) {
+        this.dsCotacaoDollarCanadense = dsCotacaoDollarCanadense;
+    }
+
+    public Double getDsCotacaoEuro() {
+        return dsCotacaoEuro;
+    }
+
+    public void setDsCotacaoEuro(Double dsCotacaoEuro) {
+        this.dsCotacaoEuro = dsCotacaoEuro;
+    }
+
+    public Double getDsCotacaoFrancoSuico() {
+        return dsCotacaoFrancoSuico;
+    }
+
+    public void setDsCotacaoFrancoSuico(Double dsCotacaoFrancoSuico) {
+        this.dsCotacaoFrancoSuico = dsCotacaoFrancoSuico;
+    }
+
+    public Double getDsCotacaoLibra() {
+        return dsCotacaoLibra;
+    }
+
+    public void setDsCotacaoLibra(Double dsCotacaoLibra) {
+        this.dsCotacaoLibra = dsCotacaoLibra;
+    }
+
+    public Double getDsCotacaoReal() {
+        return dsCotacaoReal;
+    }
+
+    public void setDsCotacaoReal(Double dsCotacaoReal) {
+        this.dsCotacaoReal = dsCotacaoReal;
+    }
+
+    public Double getDsCotacaoYen() {
+        return dsCotacaoYen;
+    }
+
+    public void setDsCotacaoYen(Double dsCotacaoYen) {
+        this.dsCotacaoYen = dsCotacaoYen;
+    }
+
+    public Double getDsCotacaoYuan() {
+        return dsCotacaoYuan;
+    }
+
+    public void setDsCotacaoYuan(Double dsCotacaoYuan) {
+        this.dsCotacaoYuan = dsCotacaoYuan;
+    }
+
+    public String getDtCotacao() {
+        return dtCotacao;
+    }
+
+    public void setDtCotacao(String dtCotacao) {
+        this.dtCotacao = dtCotacao;
+    }
+    
+    
 }

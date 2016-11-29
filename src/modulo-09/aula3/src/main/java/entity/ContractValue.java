@@ -53,4 +53,54 @@ public class ContractValue implements Serializable{
     
     @OneToOne
     private Contract contract;
+
+    public Long getIdContractValue() {
+        return idContractValue;
+    }
+
+    public void setIdContractValue(Long idContractValue) {
+        this.idContractValue = idContractValue;
+    }
+
+    public String getDsCoin() {
+        return dsCoin;
+    }
+
+    public void setDsCoin(String dsCoin) {
+        this.dsCoin = dsCoin;
+    }
+
+    public String getDsPeriodicity() {
+        return dsPeriodicity;
+    }
+
+    public void setDsPeriodicity(String dsPeriodicity) {
+        this.dsPeriodicity = dsPeriodicity;
+    }
+
+    public String getDsAmountContractValue() {
+        return dsAmountContractValue;
+    }
+
+    public void setDsAmountContractValue(String dsAmountContractValue) {
+        this.dsAmountContractValue = dsAmountContractValue;
+    }
+
+    public String getVlMonthlyUSD() {
+        return vlMonthlyUSD;
+    }
+
+    public void setVlMonthlyUSD(String vlMonthlyUSD) {
+        this.vlMonthlyUSD = vlMonthlyUSD;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+    
+    
 }

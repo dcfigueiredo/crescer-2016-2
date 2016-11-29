@@ -53,4 +53,54 @@ public class Usuario implements Serializable{
     @Basic(optional = false)
     @Column(name = "TP_PERMISSAO")
     private String tpPermissao;
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getDsEmail() {
+        return dsEmail;
+    }
+
+    public void setDsEmail(String dsEmail) {
+        this.dsEmail = dsEmail;
+    }
+
+    public String getDsSituacao() {
+        return dsSituacao;
+    }
+
+    public void setDsSituacao(String dsSituacao) {
+        this.dsSituacao = dsSituacao;
+    }
+
+    public String getDsUserName() {
+        return dsUserName;
+    }
+
+    public void setDsUserName(String dsUserName) {
+        this.dsUserName = dsUserName;
+    }
+
+    public String getNmUsuario() {
+        return nmUsuario;
+    }
+
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
+    }
+
+    public String getTpPermissao() {
+        return tpPermissao;
+    }
+
+    public void setTpPermissao(String tpPermissao) {
+        this.tpPermissao = tpPermissao;
+    }
+    
+    
 }

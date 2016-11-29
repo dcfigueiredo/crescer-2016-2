@@ -54,17 +54,6 @@ public class Contract implements Serializable{
     @ManyToOne
     private Client client;
     
-    @OneToOne
-    private ContractValue contractValue;
-
-    public ContractValue getContractValue() {
-        return contractValue;
-    }
-
-    public void setContractValue(ContractValue contractValue) {
-        this.contractValue = contractValue;
-    }    
-    
     public Long getIdContract() {
         return idContract;
     }

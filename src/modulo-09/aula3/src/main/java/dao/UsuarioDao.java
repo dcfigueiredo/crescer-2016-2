@@ -6,7 +6,10 @@
 package dao;
 
 import entity.Usuario;
-import entity.Usuario;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -14,7 +17,7 @@ import javax.persistence.EntityManager;
  *
  * @author Daniel
  */
-public class UsuarioDao implements IDao<Usuario>{
+public class UsuarioDao implements IDao<Usuario> {
 
     private EntityManager em;
 
@@ -60,4 +63,23 @@ public class UsuarioDao implements IDao<Usuario>{
         return em.createQuery("Select u from Usuario u").getResultList();
     }
 
+    @Override
+    public void export() {
+        List<Usuario> lista = list();
+        try {
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("client.csv")));
+            writer.println("ID;DS_USERNAME;DS_EMAIL;DS_SITUACAO;NM_USUARIO;TP_PERMISSAO");
+            for (Usuario usuario : lista) {
+                writer.println(usuario.getIdUsuario() + ";"
+                        + usuario.getDsUserName() + ";"
+                        + usuario.getDsEmail() + ";"
+                        + usuario.getDsSituacao() + ";"
+                        + usuario.getNmUsuario() + ";"
+                        + usuario.getTpPermissao());
+            }
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println("Empty dry cat.");
+        }
+    }
 }

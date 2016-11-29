@@ -7,6 +7,10 @@ package dao;
 
 import entity.Contract;
 import entity.ContractValue;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -58,5 +62,25 @@ public class ContractValueDao implements IDao<ContractValue> {
     @Override
     public List<ContractValue> list() {
         return em.createQuery("Select cv from ContractValue cv").getResultList();
+    }
+    
+    @Override
+    public void export() {
+        List<ContractValue> lista = list();
+        try {
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("client.csv")));
+            writer.println("ID;CONTRACT_ID_CONTRACT;DS_AMOUNT_CONTRACT_VALUE;DS_COIN;DS_PERIODICITY;VL_MONTHLY_USD");
+            for (ContractValue contractValue : lista) {
+                writer.println(contractValue.getIdContractValue()+ ";"
+                        + contractValue.getContract().getIdContract()+ ";"
+                        + contractValue.getDsAmountContractValue()+ ";"
+                        + contractValue.getDsCoin()+ ";"
+                        + contractValue.getDsPeriodicity()+ ";"
+                        + contractValue.getVlMonthlyUSD());
+            }
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println("Empty dry cat.");
+        }
     }
 }

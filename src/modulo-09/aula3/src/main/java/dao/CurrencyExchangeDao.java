@@ -5,8 +5,11 @@
  */
 package dao;
 
-import entity.Contract;
 import entity.CurrencyExchange;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -58,5 +61,23 @@ public class CurrencyExchangeDao implements IDao<CurrencyExchange> {
     @Override
     public List<CurrencyExchange> list() {
         return em.createQuery("Select ce from CurrencyExchange ce").getResultList();
+    }
+
+    @Override
+    public void export() {
+        List<CurrencyExchange> lista = list();
+        try {
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("client.csv")));
+            writer.println("ID;DS_COIN;DT_CURRENCY_EXCHANGE;VL_RATE");
+            for (CurrencyExchange currencyExchange : lista) {
+                writer.println(currencyExchange.getIdCurrencyExchange() + ";"
+                        + currencyExchange.getDsCoin() + ";"
+                        + currencyExchange.getDtCurrencyExchange() + ";"
+                        + currencyExchange.getVlRate());
+            }
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println("Empty dry cat.");
+        }
     }
 }
