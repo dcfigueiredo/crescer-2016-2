@@ -55,28 +55,28 @@ public class PessoaDao implements IDao<Pessoa, Long> {
         }
     }
 
-    @Override
-    public Pessoa find(Long id) {
-        final EntityManagerFactory emf;
-        emf = Persistence.createEntityManagerFactory("CRESCER");
-        final EntityManager em;
-        em = emf.createEntityManager();
+//    @Override
+//    public Pessoa find(Long id) {
+//        final EntityManagerFactory emf;
+//        emf = Persistence.createEntityManagerFactory("CRESCER");
+//        final EntityManager em;
+//        em = emf.createEntityManager();
+//
+//        Pessoa pessoa = em.find(Pessoa.class, id);
+//        if (pessoa != null) {
+//            em.close();
+//            emf.close();
+//            return pessoa;
+//        }
+//        em.close();
+//        emf.close();
+//        System.out.println("PEssoa nao encontrada");
+//
+//        return null;
+//    }
 
-        Pessoa pessoa = em.find(Pessoa.class, id);
-        if (pessoa != null) {
-            em.close();
-            emf.close();
-            return pessoa;
-        }
-        em.close();
-        emf.close();
-        System.out.println("PEssoa nao encontrada");
-
-        return null;
-    }
-
-    @Override
-    public List<Pessoa> findAll() {
-        return em.createQuery("Select p from Pessoa p").getResultList();
-    }
+//    @Override
+//    public List<Pessoa> findAll() {
+//        return em.createQuery("Select p from Pessoa p").getResultList();
+//    }
 }

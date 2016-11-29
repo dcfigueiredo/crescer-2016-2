@@ -13,11 +13,10 @@ import java.util.List;
  * @param <T>
  * @param <ID>
  */
-public interface IDao<T, ID> {
+public interface IDao<T> {
 
     void insert(T t);
-    void delete(T t);
-
-    T find(ID id);
-    List<T> findAll();
+    void update(T t);
+    void delete(T t);    
+    List<T> list();
 }

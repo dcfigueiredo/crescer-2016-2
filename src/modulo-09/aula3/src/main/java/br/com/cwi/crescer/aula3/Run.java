@@ -16,14 +16,6 @@ public class Run {
         final EntityManagerFactory emf;
         emf = Persistence.createEntityManagerFactory("CRESCER");
         final EntityManager em;
-        em = emf.createEntityManager();
-
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNmPessoa("Daniel");
-        PessoaDao pf = new PessoaDao(em);
-        pf.insert(pessoa);
-
-        em.close();
-        emf.close();
+        em = emf.createEntityManager();       
     }
 }
