@@ -10,8 +10,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -26,7 +28,7 @@ public class MeuSQLUtils {
                 StringBuffer comandoSQL = new StringBuffer();
                 while ((linha = br.readLine()) != null) {
                     comandoSQL.append(linha).append(" ");
-                }            
+                }
                 executarSQL(comandoSQL.toString());
             } catch (FileNotFoundException ex) {
                 System.out.println("Arquivo não encontrado.");
@@ -37,12 +39,14 @@ public class MeuSQLUtils {
             System.out.println("Arquivo invalido.");
         }
     }
-    
-    private static void executarSQL(String comando){
-        try (final PreparedStatement preparedStatement = ConnectionUtils.getConnection().prepareStatement(comando);){
-            
-        } catch(SQLException ex){
-            
+
+    private static void executarSQL(String comando) {
+        try (
+                final Connection connection = ConnectionUtils.getConnection();
+                final Statement statement = connection.createStatement();) {
+            statement.executeQuery(comando);
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 }
