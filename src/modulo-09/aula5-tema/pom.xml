@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.cwi.crescer</groupId>
-    <artifactId>aula5</artifactId>
-    <version>1.0.0.0</version>
+    <artifactId>aula5tema</artifactId>
+    <version>1.0.0</version>
     <packaging>war</packaging>
 
     <name>aula5tema</name>

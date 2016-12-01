@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula5.tema.entity;
+package br.com.cwi.crescer.aula5tema.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

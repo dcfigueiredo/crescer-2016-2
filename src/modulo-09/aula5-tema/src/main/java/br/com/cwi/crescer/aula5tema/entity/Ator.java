@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula5.tema.entity;
+package br.com.cwi.crescer.aula5tema.entity;
 
 import java.util.List;
 import javax.persistence.Basic;
@@ -23,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ATOR")
-class Ator {
+public class Ator {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ATOR")

@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition 
-
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-
-    template="/templates/template.xhtml"
-    xmlns:f="http://java.sun.com/jsf/core">
-
-    <ui:define name="form">
-
-        <div class="form-group"> 
-            <h:outputLabel for="nome" value="#{bundle.pessoa_nome}"></h:outputLabel>
-            <h:inputText id="nome" value="#{hello.pessoa.nmPessoa}" styleClass="form-control"/>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <head>
+        <title>Filme Cadastrator x2016x</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class="container-btn-idioma">
+            <p>
+                Clique aqui para cadastrar idiomas novos.
+            </p>
+            <h:button value="Cadastro de Idiomas" outcome="idioma" ></h:button>
         </div>
-
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{hello.adicionar}">    
-            <f:ajax execute="@form" render="@form" />
-        </h:commandButton>
-
-        <h:dataTable id="pessoas" value="#{hello.pessoas}" var="pessoa" styleClass="table table-hover">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="#{bundle.pessoa_id}"/>
-                </f:facet>
-                <h:outputText value="#{pessoa.idPessoa}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="#{bundle.pessoa_nome}"/>
-                </f:facet>
-                <h:outputText value="#{pessoa.nmPessoa}"/>
-            </h:column>
-
-        </h:dataTable>
-
-        <h:messages id="messages">
-
-        </h:messages>
-
-
-    </ui:define>
-
-</ui:composition>
+        <div>
+            <p>
+                Clique aqui para cadastrar atores novos.
+            </p>
+<!--            <h:button value="Cadastro de Atores" outcome="ator"></h:button>-->
+        </div>
+    </body>
+</html>
