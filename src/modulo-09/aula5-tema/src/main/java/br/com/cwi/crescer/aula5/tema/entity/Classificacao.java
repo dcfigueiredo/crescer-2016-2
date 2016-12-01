@@ -5,15 +5,12 @@
  */
 package br.com.cwi.crescer.aula5.tema.entity;
 
-import java.util.List;
 import javax.persistence.Basic;
-import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CLASSIFICACAO")
-class Classificacao {
+public class Classificacao {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLASSIFICACAO")
@@ -35,4 +32,22 @@ class Classificacao {
     @Basic(optional = false)
     @Column(name = "NM_CLASSIFICACAO")
     private String nmClassificacao;
+
+    public Long getIdClassificacao() {
+        return idClassificacao;
+    }
+
+    public void setIdClassificacao(Long idClassificacao) {
+        this.idClassificacao = idClassificacao;
+    }
+
+    public String getNmClassificacao() {
+        return nmClassificacao;
+    }
+
+    public void setNmClassificacao(String nmClassificacao) {
+        this.nmClassificacao = nmClassificacao;
+    }
+    
+    
 }

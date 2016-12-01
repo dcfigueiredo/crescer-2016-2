@@ -23,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ELENCO")
-class Elenco {
+public class Elenco {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ELENCO")
     @SequenceGenerator(name = "SEQ_ELENCO", sequenceName = "SEQ_ELENCO", allocationSize = 1)
@@ -37,4 +37,30 @@ class Elenco {
 
     @OneToMany(cascade = ALL)
     private List<Ator> atores;
+
+    public Long getIdElenco() {
+        return idElenco;
+    }
+
+    public void setIdElenco(Long idElenco) {
+        this.idElenco = idElenco;
+    }
+
+    public String getNmDescricao() {
+        return nmDescricao;
+    }
+
+    public void setNmDescricao(String nmDescricao) {
+        this.nmDescricao = nmDescricao;
+    }
+
+    public List<Ator> getAtores() {
+        return atores;
+    }
+
+    public void setAtores(List<Ator> atores) {
+        this.atores = atores;
+    }
+    
+    
 }

@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula5.tema.entity;
 
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class Filme {
 
     @Basic(optional = false)
     @Column(name = "DATE_FILME")
-    private String dtFilme;
+    private Date dtFilme;
     
     @Basic(optional = false)
     @Column(name = "NM_DIRETO")
@@ -53,4 +54,70 @@ public class Filme {
     
     @OneToOne
     private Classificacao classificacao;
+
+    public Long getIdFilme() {
+        return idFilme;
+    }
+
+    public void setIdFilme(Long idFilme) {
+        this.idFilme = idFilme;
+    }
+
+    public String getNmFilme() {
+        return nmFilme;
+    }
+
+    public void setNmFilme(String nmFilme) {
+        this.nmFilme = nmFilme;
+    }
+
+    public Date getDtFilme() {
+        return dtFilme;
+    }
+
+    public void setDtFilme(Date dtFilme) {
+        this.dtFilme = dtFilme;
+    }
+
+    public String getNmDiretor() {
+        return nmDiretor;
+    }
+
+    public void setNmDiretor(String nmDiretor) {
+        this.nmDiretor = nmDiretor;
+    }
+
+    public Elenco getElenco() {
+        return elenco;
+    }
+
+    public void setElenco(Elenco elenco) {
+        this.elenco = elenco;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public Idioma getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(Idioma idioma) {
+        this.idioma = idioma;
+    }
+
+    public Classificacao getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(Classificacao classificacao) {
+        this.classificacao = classificacao;
+    }
+    
+    
 }

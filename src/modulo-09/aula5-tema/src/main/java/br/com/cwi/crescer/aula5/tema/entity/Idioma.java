@@ -23,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "IDIOMA")
-class Idioma {
+public class Idioma {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_IDIOMA")
@@ -35,4 +35,22 @@ class Idioma {
     @Basic(optional = false)
     @Column(name = "NM_IDIOMA")
     private String nmIdioma;
+
+    public Long getIdIdioma() {
+        return idIdioma;
+    }
+
+    public void setIdIdioma(Long idIdioma) {
+        this.idIdioma = idIdioma;
+    }
+
+    public String getNmIdioma() {
+        return nmIdioma;
+    }
+
+    public void setNmIdioma(String nmIdioma) {
+        this.nmIdioma = nmIdioma;
+    }
+    
+    
 }

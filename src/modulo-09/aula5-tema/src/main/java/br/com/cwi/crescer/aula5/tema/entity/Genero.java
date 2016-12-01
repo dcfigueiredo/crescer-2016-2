@@ -36,4 +36,21 @@ class Genero {
     @Column(name = "NM_DESCRICAO")
     private String nmDescricao;
 
+    public Long getIdElenco() {
+        return idElenco;
+    }
+
+    public void setIdElenco(Long idElenco) {
+        this.idElenco = idElenco;
+    }
+
+    public String getNmDescricao() {
+        return nmDescricao;
+    }
+
+    public void setNmDescricao(String nmDescricao) {
+        this.nmDescricao = nmDescricao;
+    }
+
+    
 }
