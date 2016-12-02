@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -38,6 +39,7 @@ public class Filme implements Serializable{
 
     @Basic(optional = false)
     @Column(name = "DATE_FILME")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtFilme;
     
     @Basic(optional = false)
