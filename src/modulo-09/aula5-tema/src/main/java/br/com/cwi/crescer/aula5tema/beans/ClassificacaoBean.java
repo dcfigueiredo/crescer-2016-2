@@ -33,7 +33,7 @@ public class ClassificacaoBean extends AbstractDao<Classificacao, Long> {
 
     @Override
     public List<Classificacao> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getEntityManager().createQuery("select c from Classificacao c").getResultList();
     }
 
 }

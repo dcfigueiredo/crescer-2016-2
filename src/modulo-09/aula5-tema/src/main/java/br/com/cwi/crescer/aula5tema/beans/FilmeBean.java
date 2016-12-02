@@ -33,7 +33,7 @@ public class FilmeBean extends AbstractDao<Filme, Long> {
 
     @Override
     public List<Filme> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getEntityManager().createQuery("select f from Filme f").getResultList();
     }
 
 }

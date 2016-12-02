@@ -33,11 +33,6 @@ public class IdiomaBean extends AbstractDao<Idioma, Long> {
 
     @Override
     public List<Idioma> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Idioma> findAll() {
         return this.getEntityManager().createQuery("select i from Idioma i").getResultList();
     }
-
 }

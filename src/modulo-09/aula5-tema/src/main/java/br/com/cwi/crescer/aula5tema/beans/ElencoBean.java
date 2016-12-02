@@ -33,7 +33,7 @@ public class ElencoBean extends AbstractDao<Elenco, Long> {
 
     @Override
     public List<Elenco> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getEntityManager().createQuery("select e from Elenco e").getResultList();
     }
 
 }

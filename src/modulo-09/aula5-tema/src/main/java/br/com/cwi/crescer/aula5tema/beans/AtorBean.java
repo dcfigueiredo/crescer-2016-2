@@ -33,7 +33,7 @@ public class AtorBean extends AbstractDao<Ator, Long> {
 
     @Override
     public List<Ator> list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
     }
 
 }
