@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,8 +5,8 @@
  */
 package br.com.cwi.crescer.aula5tema.web;
 
-import br.com.cwi.crescer.aula5tema.beans.IdiomaBean;
-import br.com.cwi.crescer.aula5tema.entity.Idioma;
+import br.com.cwi.crescer.aula5tema.beans.AtorBean;
+import br.com.cwi.crescer.aula5tema.entity.Ator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -18,43 +17,43 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author daniel.figueiredo
+ * @author Daniel
  */
 @ManagedBean
 @ViewScoped
-public class IdiomaRun {
+public class AtorRun {
 
     @EJB
-    private IdiomaBean idiomaBean;
+    private AtorBean atorBean;
 
-    private Idioma idioma;
-    private List<Idioma> idiomas;
+    private Ator ator;
+    private List<Ator> atores;
 
     @PostConstruct
     public void init() {
-        this.idioma = new Idioma();
-        this.idiomas = idiomaBean.list();
-        this.idiomas.sort((a, b) -> a.getIdIdioma().compareTo(b.getIdIdioma()));
+        this.ator = new Ator();
+        this.atores = atorBean.list();
+        this.atores.sort((a, b) -> a.getIdAtor().compareTo(b.getIdAtor()));
     }
 
-    public Idioma getIdioma() {
-        return idioma;
+    public Ator getAtor() {
+        return ator;
     }
 
-    public void setIdioma(Idioma idioma) {
-        this.idioma = idioma;
+    public void setAtor(Ator ator) {
+        this.ator = ator;
     }
 
-    public List<Idioma> getIdiomas() {
-        return idiomas;
+    public List<Ator> getAtores() {
+        return atores;
     }
 
-    public void setIdiomas(List<Idioma> idiomas) {
-        this.idiomas = idiomas;
+    public void setAtores(List<Ator> atores) {
+        this.atores = atores;
     }
 
     public void adicionar() {
-        idiomaBean.insert(idioma);
+        atorBean.insert(ator);
         this.init();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Teste", "teste"));
     }

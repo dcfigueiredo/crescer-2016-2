@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<ui:composition 
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"    
+    xmlns:f="http://java.sun.com/jsf/core"
+    template="/templates/template.xhtml">
+    
+    <ui:define name="form">
+
+        <div class="form-group"> 
+            <h:outputLabel for="ator" value="Ator"></h:outputLabel>
+            <h:inputText id="ator" value="#{atorRun.ator.nmAtor}" styleClass="form-control"/>
+        </div>
+
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{atorRun.adicionar()}">    
+            <f:ajax execute="@form" render="@form" />
+        </h:commandButton>
+
+        <h:dataTable id="atores" value="#{atorRun.atores}" var="ator" styleClass="table table-hover">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.id}"/>
+                </f:facet>
+                <h:outputText value="#{ator.idAtor}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.nome}"/>
+                </f:facet>
+                <h:outputText value="#{ator.nmAtor}"/>
+            </h:column>
+
+        </h:dataTable>
+
+<!--        <h:messages id="messages">
+
+        </h:messages>-->
+    </ui:define>
+
+</ui:composition>
