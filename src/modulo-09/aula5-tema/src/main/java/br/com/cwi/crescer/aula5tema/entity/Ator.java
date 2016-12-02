@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula5tema.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
 import static javax.persistence.CascadeType.ALL;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ATOR")
-public class Ator {
+public class Ator implements Serializable {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ATOR")
@@ -51,6 +52,5 @@ public class Ator {
     public void setNmAtor(String nmAtor) {
         this.nmAtor = nmAtor;
     }
-    
-    
+
 }

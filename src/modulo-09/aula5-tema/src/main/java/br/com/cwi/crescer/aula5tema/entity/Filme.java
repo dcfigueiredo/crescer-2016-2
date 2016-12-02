@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula5tema.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FILME")
-public class Filme {
+public class Filme implements Serializable{
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FILME")

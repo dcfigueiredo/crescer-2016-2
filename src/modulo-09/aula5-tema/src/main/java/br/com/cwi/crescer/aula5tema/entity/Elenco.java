@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula5tema.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
 import static javax.persistence.CascadeType.ALL;
@@ -23,7 +24,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ELENCO")
-public class Elenco {
+public class Elenco implements Serializable {
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ELENCO")
     @SequenceGenerator(name = "SEQ_ELENCO", sequenceName = "SEQ_ELENCO", allocationSize = 1)
@@ -61,6 +63,5 @@ public class Elenco {
     public void setAtores(List<Ator> atores) {
         this.atores = atores;
     }
-    
-    
+
 }

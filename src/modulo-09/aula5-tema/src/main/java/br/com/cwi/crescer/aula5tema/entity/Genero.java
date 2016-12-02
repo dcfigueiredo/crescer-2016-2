@@ -3,54 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula5.tema.entity;
+package br.com.cwi.crescer.aula5tema.entity;
 
-import java.util.List;
+import java.io.Serializable;
 import javax.persistence.Basic;
-import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  *
- * @author daniel.figueiredo
+ * @author Daniel
  */
 @Entity
 @Table(name = "GENERO")
-class Genero {
+public class Genero implements Serializable {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_GENERO")
     @SequenceGenerator(name = "SEQ_GENERO", sequenceName = "SEQ_GENERO", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_GENERO")
-    private Long idElenco;
+    private Long idGenero;
 
     @Basic(optional = false)
-    @Column(name = "NM_DESCRICAO")
-    private String nmDescricao;
+    @Column(name = "NM_GENERO")
+    private String nmGenero;
 
-    public Long getIdElenco() {
-        return idElenco;
+    public Long getIdGenero() {
+        return idGenero;
     }
 
-    public void setIdElenco(Long idElenco) {
-        this.idElenco = idElenco;
+    public void setIdGenero(Long idGenero) {
+        this.idGenero = idGenero;
     }
 
-    public String getNmDescricao() {
-        return nmDescricao;
+    public String getNmGenero() {
+        return nmGenero;
     }
 
-    public void setNmDescricao(String nmDescricao) {
-        this.nmDescricao = nmDescricao;
+    public void setNmGenero(String nmGenero) {
+        this.nmGenero = nmGenero;
     }
-
+    
     
 }

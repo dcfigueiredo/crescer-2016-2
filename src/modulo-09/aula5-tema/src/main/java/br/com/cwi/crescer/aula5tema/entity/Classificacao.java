@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula5tema.entity;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CLASSIFICACAO")
-public class Classificacao {
+public class Classificacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLASSIFICACAO")
@@ -48,6 +49,5 @@ public class Classificacao {
     public void setNmClassificacao(String nmClassificacao) {
         this.nmClassificacao = nmClassificacao;
     }
-    
-    
+
 }
