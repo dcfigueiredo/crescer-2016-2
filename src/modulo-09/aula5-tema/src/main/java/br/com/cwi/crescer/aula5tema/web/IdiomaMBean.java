@@ -22,7 +22,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class IdiomaRun {
+public class IdiomaMBean {
 
     @EJB
     private IdiomaBean idiomaBean;

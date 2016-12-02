@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class GeneroRun {
+public class GeneroMBean {
 
     @EJB
     private GeneroBean generoBean;

@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class AtorRun {
+public class AtorMBean {
 
     @EJB
     private AtorBean atorBean;
