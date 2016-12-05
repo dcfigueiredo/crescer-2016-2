@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h:outputText id="title" value="#{bundle.usuario_title}"/>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group"> 
+                <h:outputLabel for="username" value="#{bundle.usuario_nome}"></h:outputLabel>
+                <h:inputText id="dsUsername" value="#{usuarioMBean.usuario.dsUsername}" styleClass="form-control" required="true"/>
+            </div>
+
+            <div class="form-group"> 
+                <h:outputLabel for="email" value="#{bundle.usuario_email}"></h:outputLabel>
+                <h:inputText id="dsEmail" value="#{usuarioMBean.usuario.dsEmail}" styleClass="form-control" required="true"/>
+            </div>
+
+            <div class="form-group"> 
+                <h:outputLabel for="password" value="#{bundle.usuario_password}"></h:outputLabel>
+                <h:inputSecret id="dsPassword" value="#{usuarioMBean.usuario.dsPassword}" styleClass="form-control" required="true"/>
+            </div>
+            
+            <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{usuarioMBean.cadastrar()}">    
+                <f:ajax execute="@form" render="@form" />
+            </h:commandButton>
+
+            <h:messages styleClass="alert" errorClass="alert-danger"/>
+        </div>
+    </div>
+
+</ui:composition>

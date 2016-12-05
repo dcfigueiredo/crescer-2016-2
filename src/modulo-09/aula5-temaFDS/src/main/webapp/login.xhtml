@@ -3,7 +3,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="/templates/template.xhtml"    >
+    template="/templates/template.xhtml"
+    xmlns:f="http://java.sun.com/jsf/core" >
 
     <ui:define name="form">
 
@@ -29,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <h:outputLabel for="password" value="#{bundle.login_password}"/>
-                            <h:inputSecret id="password" styleClass="form-control" label="#{bundle['page.template.password']}" value="#{loginMBean.password}" required="true"/>
+                            <h:inputSecret id="password" styleClass="form-control" label="Password" value="#{loginMBean.password}" required="true"/>
                         </div>
                         <div class="form-group">
                             <h:commandButton styleClass="btn btn-success" value="#{bundle.login_enviar}" action="#{loginMBean.login}"/>
@@ -41,7 +42,6 @@
                 </div>
             </div>
         </div>
-
     </ui:define>
 
 </ui:composition>
