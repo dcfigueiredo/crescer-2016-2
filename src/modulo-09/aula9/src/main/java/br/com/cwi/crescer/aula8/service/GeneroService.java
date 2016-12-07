@@ -20,25 +20,25 @@ import org.springframework.stereotype.Service;
 public class GeneroService {
 
     @Autowired
-    GeneroRepository idiomaRepository;
+    GeneroRepository generoRepository;
 
     public Page<Genero> findAll(Pageable pgbl) {
-        return idiomaRepository.findAll(pgbl);
+        return generoRepository.findAll(pgbl);
     }
 
     public Iterable<Genero> findAll() {
-        return idiomaRepository.findAll();
+        return generoRepository.findAll();
     }
 
     public Genero save(Genero g) {
-        return idiomaRepository.save(g);
+        return generoRepository.save(g);
     }
 
     public void delete(Long id) {
-        idiomaRepository.delete(id);
+        generoRepository.delete(id);
     }
 
     public Genero findOne(Long id) {
-        return idiomaRepository.findOne(id);
+        return generoRepository.findOne(id);
     }
 }
