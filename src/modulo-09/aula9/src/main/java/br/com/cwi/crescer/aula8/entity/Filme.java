@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.aula5.entity;
+package br.com.cwi.crescer.aula8.entity;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 import static javax.persistence.TemporalType.DATE;

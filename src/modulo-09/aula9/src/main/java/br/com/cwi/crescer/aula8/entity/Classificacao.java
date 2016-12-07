@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.aula5.entity;
+package br.com.cwi.crescer.aula8.entity;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 /**
  * @author Carlos H. Nonnemacher
@@ -27,10 +30,13 @@ public class Classificacao implements Serializable {
     private Long id;
 
     @Basic(optional = false)
+    @Size(min = 1, max = 255, message = "Descrição inválida {0}")
     @Column(name = "DS_CLASSIFICACAO")
     private String descricao;
 
     @Basic(optional = false)
+    @Min(value = 1)
+    @Max(value = 200)
     @Column(name = "NR_IDADE")
     private Integer idade;
 
