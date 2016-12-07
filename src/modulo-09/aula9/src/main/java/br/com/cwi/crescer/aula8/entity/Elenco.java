@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Carlos H. Nonnemacher
@@ -30,10 +32,13 @@ public class Elenco implements Serializable {
     private Long id;
 
     @Basic(optional = false)
+    @Size(min = 1, max = 255, message = "Descrição inválida {0}")
     @Column(name = "DS_ELENCO")
     private String descricao;
     
+    @NotNull
     @OneToMany(cascade = ALL)
+    @Basic(optional = false)
     private List<Ator> atores;
 
     public Long getId() {

@@ -29,7 +29,12 @@ public class Ator implements Serializable {
     @Basic(optional = false)
     @Column(name = "NM_ATOR")
     private String nome;
-
+    
+    @Override
+    public String toString(){
+        return this.getNome();
+    }
+    
     public Long getId() {
         return id;
     }
